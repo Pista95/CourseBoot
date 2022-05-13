@@ -21,7 +21,7 @@ public class CourseController {
     public void addCourse(@RequestBody Course course){
         courseService.addCourse(course);
     }
-    //összes kurzus listázása
+    //összes kurzus listázása //
     @GetMapping("getAllCourse")
     @ResponseBody
     public List<Course> getAllCourse(){
