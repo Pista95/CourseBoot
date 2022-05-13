@@ -1,1 +1,19 @@
-//
+Az órai példák ezen repository tartalma alapján készültek,
+eltérés témájában lehet, techonológiában nincs.
+https://github.com/iasatan/uniWebDev
+
+Követelmény:
+
+Jó kód,
+4 modell, hozzá tartozó persist, service, controller
+4 modell kapcsolódjon egymáshoz
+frontend nem kell, postmennel elérni, postman metódusokat beletenni
+CSAK FORRÁSKÓD!! maven vagy build mappa nem kell!!!
+
+-----------------------------
+Jelenlegi hibák:
+1. A courseregistration tábla létrejön, de az index2.html-ből küldött postot
+csak részben tárololódik a táblában.
+
+Fejlesztés: Ha a student táblában beszúrunk egy rekorot, akkor a profile táblában
+is jöjjön létre egy új rekord default adatokkal!
