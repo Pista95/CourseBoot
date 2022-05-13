@@ -22,10 +22,12 @@ public class CourseRegistration {
     private long courseregistration_id;
     @ManyToOne
     @JoinColumn(name = "student_id")
+    //Itt lehet vmi hiba
     private Student student;
 
     @ManyToOne
     @JoinColumn(name = "course_id")
+    //Itt lehet vmi hiba
     private Course course;
 
    // LocalDateTime registeredAt;
