@@ -1,3 +1,4 @@
+/*
 DROP TABLE IF EXISTS  book;
 CREATE TABLE IF NOT EXISTS book (
                                id INT AUTO_INCREMENT PRIMARY KEY,
@@ -20,4 +21,5 @@ CREATE TABLE IF NOT EXISTS employee(
                                        employer_id INT
 );
 INSERT INTO employee(id,age,hourcount,name,salary,employer_id) VALUES (1,18,96,'PISTA',720000,55);
+
 */

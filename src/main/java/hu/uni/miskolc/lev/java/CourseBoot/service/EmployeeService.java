@@ -1,4 +1,6 @@
+/*
 package hu.uni.miskolc.lev.java.CourseBoot.service;
+
 import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.EmployeeEntity;
 import java.util.List;
 public interface EmployeeService {
@@ -8,3 +10,5 @@ public interface EmployeeService {
     void AddHourToEmployee(int employeeId, int hour);
     List <EmployeeEntity> getEmployeesByEmployerId(int employerId);
 }
+
+ */

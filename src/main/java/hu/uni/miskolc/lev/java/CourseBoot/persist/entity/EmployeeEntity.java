@@ -1,3 +1,4 @@
+/*
 package hu.uni.miskolc.lev.java.CourseBoot.persist.entity;
 
 import lombok.AllArgsConstructor;
@@ -32,3 +33,5 @@ public class EmployeeEntity {
     @JoinColumn(name = "employer_id")
     private EmployerEntity employerEntity;
 }
+
+ */

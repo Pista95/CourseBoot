@@ -10,4 +10,3 @@ import java.util.List;
         void deleteProfile(Profile profile);
         List<Profile> getAllProfile();
     }
-

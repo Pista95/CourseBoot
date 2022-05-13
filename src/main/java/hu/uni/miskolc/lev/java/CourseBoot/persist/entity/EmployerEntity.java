@@ -1,3 +1,4 @@
+/*
 package hu.uni.miskolc.lev.java.CourseBoot.persist.entity;
 
 import lombok.AllArgsConstructor;
@@ -29,3 +30,5 @@ public class EmployerEntity {
     private List<EmployeeEntity> employeeList;
 
 }
+
+ */

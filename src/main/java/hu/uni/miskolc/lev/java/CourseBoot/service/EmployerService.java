@@ -1,3 +1,4 @@
+/*
 package hu.uni.miskolc.lev.java.CourseBoot.service;
 import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.EmployerEntity;
 import java.util.List;
@@ -7,3 +8,5 @@ public interface EmployerService {
     List<EmployerEntity> GetAllEmployer();
 
 }
+
+ */

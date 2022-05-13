@@ -1,3 +1,4 @@
+/*
 package hu.uni.miskolc.lev.java.CourseBoot;
 
 import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.EmployeeEntity;
@@ -25,3 +26,5 @@ public class EmployeeController {
         employeeService.hireEmployee(employee);
     }
 }
+
+ */

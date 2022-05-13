@@ -1,3 +1,4 @@
+/*
 package hu.uni.miskolc.lev.java.CourseBoot.service;
 
 import hu.uni.miskolc.lev.java.CourseBoot.persist.EmployeeRepository;
@@ -36,3 +37,5 @@ public class EmployeeSericeImpl implements EmployeeService{
         return null;
     }
 }
+
+ */

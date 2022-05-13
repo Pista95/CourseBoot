@@ -1,3 +1,4 @@
+/*
 package hu.uni.miskolc.lev.java.CourseBoot.service;
 import hu.uni.miskolc.lev.java.CourseBoot.persist.EmployerRepository;
 import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.EmployerEntity;
@@ -29,3 +30,5 @@ public class EmployerServiceImpl implements EmployerService {
         return (List<EmployerEntity>) employerRepository.findAll();
     }
 }
+
+ */
