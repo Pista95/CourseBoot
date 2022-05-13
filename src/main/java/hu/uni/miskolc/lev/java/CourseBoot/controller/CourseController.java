@@ -15,7 +15,7 @@ public class CourseController {
     public CourseController(CourseService courseService) {
         this.courseService = courseService;
     }
-    //Kurzus felvétel
+    // Kurzus felvétel
     @PostMapping("addCourse")
     @ResponseBody
     public void addCourse(@RequestBody Course course){
