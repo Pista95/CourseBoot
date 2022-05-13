@@ -1,3 +1,4 @@
+/*
 package hu.uni.miskolc.lev.java.CourseBoot.persist;
 
 import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.EmployeeEntity;
@@ -9,3 +10,5 @@ public interface EmployeeRepository extends CrudRepository <EmployeeEntity, Inte
     List<EmployeeEntity> findAllByHourCountIsLessThan(int hourCount);
     List<EmployeeEntity> findAllByEmployerEntity_Id(int employerId);
 }
+
+ */
