@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 @Controller
 public class CourseController {
-    private CourseService courseService;
+    private final CourseService courseService;
     public CourseController(CourseService courseService) {
         this.courseService = courseService;
     }
