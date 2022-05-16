@@ -1,6 +1,7 @@
 package hu.uni.miskolc.lev.java.CourseBoot.controller;
 
 import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.CourseRegistration;
+import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.CourseRegistrationDTO;
 import hu.uni.miskolc.lev.java.CourseBoot.service.CourseRegistrationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,9 +20,11 @@ public class CourseRegistrationController {
 
     @PostMapping("addCourseRegistration")
     @ResponseBody
-    public void addCourseRegistration(@RequestBody CourseRegistration courseRegistration){
-        courseRegistrationService.addCourseRegistration(courseRegistration);
+    public void addCourseRegistration(@RequestBody CourseRegistrationDTO courseregistrationdto){
+        courseRegistrationService.addCourseRegistration(courseregistrationdto);
     }
+
+
 
     @GetMapping("getAllCourseRegistration")
     @ResponseBody

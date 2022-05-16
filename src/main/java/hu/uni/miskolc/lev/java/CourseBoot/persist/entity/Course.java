@@ -19,11 +19,11 @@ import java.util.Set;
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long course_id;
+    private int course_id;
 
     @NotBlank
     private String name="info";
 
     @OneToMany(mappedBy = "course")
-    Set<CourseRegistration> courseregistration;
+     Set<CourseRegistration> courseregistration;
 }

@@ -21,7 +21,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 public class Student {
     @Id
     @GeneratedValue(strategy = IDENTITY)
-    private long student_id;
+    private int student_id;
 
     @NotBlank
     private String email="email";
