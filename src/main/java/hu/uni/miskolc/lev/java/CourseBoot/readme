@@ -13,7 +13,7 @@ CSAK FORRÁSKÓD!! maven vagy build mappa nem kell!!!
 -----------------------------
 Jelenlegi hibák:
 1. A courseregistration tábla létrejön, de az index2.html-ből küldött postot
-csak részben tárololódik a táblában.
+csak részben tárololódik a táblában. (Szerintem az id-k alapján meg kell keresni a hozzá tartozó objektumokat //DTO)
 
 Fejlesztés: Ha a student táblában beszúrunk egy rekorot, akkor a profile táblában
 is jöjjön létre egy új rekord default adatokkal!

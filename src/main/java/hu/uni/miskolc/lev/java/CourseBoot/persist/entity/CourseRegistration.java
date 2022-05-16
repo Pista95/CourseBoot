@@ -22,13 +22,12 @@ public class CourseRegistration {
     private long courseregistration_id;
     @ManyToOne
     @JoinColumn(name = "student_id")
-    // Itt lehet vmi hiba
     //COURSEREGISTRATION táblába student_id-hez null kerül
+    //DTO kellene
     private Student student;
 
     @ManyToOne
     @JoinColumn(name = "course_id")
-    // Itt lehet vmi hiba
     //COURSEREGISTRATION táblába course_id-hez null kerül
 
     private Course course;
