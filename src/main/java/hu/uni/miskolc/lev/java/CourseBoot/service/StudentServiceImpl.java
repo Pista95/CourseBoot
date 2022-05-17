@@ -22,7 +22,12 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public void addStudent(Student student) {
-        studentRepository.save(student);
+        //studentRepository.save(student);
+        student = studentRepository.save(student);
+        Profile profile = new Profile();
+        profile.student = student;
+        profileRepository.save(profile);
+
     }
 
     @Override
