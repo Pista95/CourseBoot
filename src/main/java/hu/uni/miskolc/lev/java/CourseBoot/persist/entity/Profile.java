@@ -28,5 +28,5 @@ public class Profile {
     @OneToOne
     @MapsId
     @JoinColumn(name = "pofile_id")
-    public Student student;
+    private Student student;
 }

@@ -25,7 +25,8 @@ public class StudentServiceImpl implements StudentService{
         //studentRepository.save(student);
         student = studentRepository.save(student);
         Profile profile = new Profile();
-        profile.student = student;
+        profile.setStudent(student);
+        //profile.student = student;
         profileRepository.save(profile);
 
     }
