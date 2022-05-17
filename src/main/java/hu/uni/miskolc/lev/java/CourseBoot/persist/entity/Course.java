@@ -21,7 +21,7 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int course_id;
 
-    @NotBlank
+    //@NotBlank
     private String name="info";
 
     @OneToMany(mappedBy = "course")
