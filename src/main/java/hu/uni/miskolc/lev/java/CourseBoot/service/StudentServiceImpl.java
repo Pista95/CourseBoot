@@ -2,6 +2,7 @@ package hu.uni.miskolc.lev.java.CourseBoot.service;
 
 import hu.uni.miskolc.lev.java.CourseBoot.persist.StudentRepository;
 import hu.uni.miskolc.lev.java.CourseBoot.persist.ProfileRepository;
+import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.Profile;
 import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

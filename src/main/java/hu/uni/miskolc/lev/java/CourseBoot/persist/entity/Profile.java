@@ -17,12 +17,13 @@ import javax.validation.constraints.NotBlank;
 @Table(name = "profile")
 public class Profile {
     @Id
-    private long pofile_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int pofile_id;
 
-    @NotBlank
+    //@NotBlank
     private String name="name";
 
-    @Min(18)
+    //@Min(18)
     private int age=18;
     @OneToOne
     @MapsId

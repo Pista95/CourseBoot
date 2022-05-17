@@ -35,6 +35,7 @@ public class CourseRegistrationServiceImpl implements CourseRegistrationService 
         courseregistration.setCourse(courseRepository.findById(courseregistrationDTO.getCourse_id()).get());
         courseregistration.setStudent(studentRepository.findById(courseregistrationDTO.getStudent_id()).get());
         courseRegistrationRepository.save(courseregistration);
+        System.out.println("Hiba"+courseregistration);
     }
 
     @Override
