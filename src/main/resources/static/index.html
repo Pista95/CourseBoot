@@ -74,8 +74,11 @@ Add a course
             if (xhr.readyState === 4 && xhr.status === 200) {
 
                 // Print received data from server
-                result.innerHTML = this.responseText;
+               // result.innerHTML = this.responseText;
+                //$("result").load("getAll");
                // alert("successful sending");
+                document.getElementById('getall').contentDocument.location.reload(true);
+
 
             }
         };
@@ -163,5 +166,7 @@ Add a course
     }
 
 </script>
+
+<iframe id="getall" src="http://localhost:8090/getAll"></iframe>
 </body>
 </html>
