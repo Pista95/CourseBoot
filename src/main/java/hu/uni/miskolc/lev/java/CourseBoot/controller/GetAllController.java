@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class GetAllController {
-    @GetMapping(value = "/getall", produces = MediaType.TEXT_HTML_VALUE)
+    @GetMapping(value = "/getAll", produces = MediaType.TEXT_HTML_VALUE)
     @ResponseBody
     public String welcomeAsHTML() {
-        return "<html>\n" + "<header><title>Welcome</title></header>\n" +
-                "<body>\n" + "Hello world\n" + "</body>\n" + "</html>";
+        return "<html>\n" + "<header><title>getAll</title></header>\n" +
+                "<body>\n" + "Student tábla listázása\n" + "</body>\n" + "</html>";
     }
 }
