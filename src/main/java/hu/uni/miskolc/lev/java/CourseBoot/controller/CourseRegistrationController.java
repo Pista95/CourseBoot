@@ -4,6 +4,7 @@ import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.CourseRegistration;
 import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.CourseRegistrationDTO;
 import hu.uni.miskolc.lev.java.CourseBoot.service.CourseRegistrationService;
 import hu.uni.miskolc.lev.java.CourseBoot.service.CourseService;
+import hu.uni.miskolc.lev.java.CourseBoot.service.ProfileService;
 import hu.uni.miskolc.lev.java.CourseBoot.service.StudentService;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,8 @@ public class CourseRegistrationController {
     public CourseRegistrationController(
             CourseRegistrationService courseRegistrationService,
             StudentService studentService,
-            CourseService courseService
+            CourseService courseService,
+            ProfileService profileService
     ) {
         this.courseRegistrationService =courseRegistrationService;
         this.studentService=studentService;
@@ -57,15 +59,14 @@ public class CourseRegistrationController {
 
             result= "<html><header><title>getAllCourseAndStudents</title></header><body>";
             result+="Rekordok száma: " +courseRegistrationService.getAllCourseRegistration().size()+"<br><table border='1'>" +
-                    "<th>Sorsz.</th><th>Student id</th><th>Kurzus id</th><th>Jegy</th>";
+                    "<th>Sorsz.</th><th>Student id</th><th>Student név</th><th>Kurzus id</th><th>Jegy</th><!--th>Jegybeírás</th-->";
          for(int i=0; i<courseRegistrationService.getAllCourseRegistration().size(); i++) {
                 result += "<tr><td>"+courseRegistrationService.getAllCourseRegistration().get(i).getCourseregistration_id()+"</td>" +
                         "<td>"+courseRegistrationService.getAllCourseRegistration().get(i).getStudent().getStudent_id()+"</td>" +
+                        "<td>"+courseRegistrationService.getAllCourseRegistration().get(i).getStudent().getProfile().getName() +"</td>" +
                         "<td>"+courseRegistrationService.getAllCourseRegistration().get(i).getCourse().getCourse_id()+"</td>" +
                         "<td>"+courseRegistrationService.getAllCourseRegistration().get(i).getPower()+"</td>" +
-
-                        //  "<td><input value='"+courseService.getAllCourse().get(i).getName()+"'></td>" +
-                       // "<td><button id='"+courseService.getAllCourse().get(i).getCourse_id()+"'>Törlés</button></td>" +
+                       // "<td><button id='"+courseService.getAllCourse().get(i).getCourse_id()+"'>Beír</button></td>" +
                         "<br>";
             }
             result+="<tr>\n<table></body></html>";

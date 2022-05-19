@@ -32,8 +32,7 @@ function sendJSON(){
     // Sending data with the request
     xhr.send(data);
     // alert("Sent JSON: " +data);
-    //document.getElementById('getallstudent').contentDocument.location.reload(true);
-    location.reload();
+    setTimeout(document.getElementById('getallstudent').contentDocument.location.reload(true),400);
 }
 /////////////////////////////////////////////////////////////
 
@@ -63,8 +62,7 @@ function addCOURSE(){
     var data = JSON.stringify({ "name": param1.value });
     // Sending data with the request
     xhr.send(data);
-   // document.getElementById('getallcourse').contentDocument.location.reload(true);
-    location.reload();
+    setTimeout( document.getElementById('getallcourse').contentDocument.location.reload(true),400);
 }
 
 /////////////////////////////////////////////////////////////
@@ -101,6 +99,6 @@ function sendCOURSEREG(){
     // Sending data with the request
     xhr.send(data);
     //alert("Sent JSON: " +data);
-    //document.getElementById('getallcourseregistrations').contentDocument.location.reload(true);
-    location.reload();
+    setTimeout(document.getElementById('getallcourseregistrations').contentDocument.location.reload(true),400);
+   // location.reload();
 }
