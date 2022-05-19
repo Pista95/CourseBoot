@@ -46,12 +46,12 @@ public class StudentController {
         } else {
              result= "<html><header><title>getAllstudent</title></header><body>";
              result+="Student/Prfile (rekordok száma: " + studentService.getAllStudent().size()+")<br><table align='center' border='1'>" +
-                     "<th>Student id</th><th>Student név</th><th>E-mail</th><th>Törlés</th>";
+                     "<th>Student id</th><th>Student név</th><th>E-mail</th><!--th>Törlés</th-->";
              for(int i=0; i<studentService.getAllStudent().size(); i++) {
                  result += "<tr><td>"+ studentService.getAllStudent().get(i).getStudent_id()+"</td>" +
                          "<td><input value='"+ profileService.getAllProfile().get(i).getName()+"'></td>" +
-                         "<td><input value='"+ studentService.getAllStudent().get(i).getEmail()+"'></td>" +
-                         "<td><button id='"+ studentService.getAllStudent().get(i).getStudent_id()+"'>Törlés</button></td>";
+                         "<td><input value='"+ studentService.getAllStudent().get(i).getEmail()+"'></td>";
+                        // "<td><button id='"+ studentService.getAllStudent().get(i).getStudent_id()+"'>Törlés</button></td>"
              }
              result+="<tr>\n<table></body></html>";
         }
