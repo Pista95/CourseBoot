@@ -2,6 +2,7 @@ package hu.uni.miskolc.lev.java.CourseBoot.controller;
 
 import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.Course;
 import hu.uni.miskolc.lev.java.CourseBoot.service.CourseService;
+import hu.uni.miskolc.lev.java.CourseBoot.service.ProfileService;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.List;
 @Controller
 public class CourseController {
     private final CourseService courseService;
@@ -43,7 +43,7 @@ public class CourseController {
         } else {
             result= "<html><header><title>getAllstudent</title></header><body>";
             result+="Course rekordok száma: " + courseService.getAllCourse().size()+"<br><table border='1'>" +
-                    "<th>Kurzus id</th><th>Kurzus név</th><th>Törlés</th>";
+                    "<th>Course id</th><th>Course név</th><th>Törlés</th>";
             for(int i=0; i<courseService.getAllCourse().size(); i++) {
                 result += "<tr><td>"+courseService.getAllCourse().get(i).getCourse_id()+"</td>" +
                         "<td><input value='"+courseService.getAllCourse().get(i).getName()+"'></td>" +

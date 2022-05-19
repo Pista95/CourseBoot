@@ -21,7 +21,7 @@ public class Profile {
     private int pofile_id;
 
     //@NotBlank
-    private String name="name";
+    private String name="default name";
 
     //@Min(18)
     private int age=18;

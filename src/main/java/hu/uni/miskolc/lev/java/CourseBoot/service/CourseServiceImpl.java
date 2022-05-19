@@ -18,6 +18,7 @@ public class CourseServiceImpl implements CourseService{
     @Override
     public void addCourse(Course course) {
         courseRepository.save(course);
+        System.out.println(lastCourse());
     }
 
     @Override
@@ -28,5 +29,14 @@ public class CourseServiceImpl implements CourseService{
     @Override
     public List<Course> getAllCourse() {
         return (List<Course>) courseRepository.findAll();
+    }
+
+    public String lastCourse(){
+        int last_id=getAllCourse().size()-1;
+        return "============== Új kurzus ==============\n" +
+                "Kurzus id:"+
+                getAllCourse().get(last_id).getCourse_id()+
+                "\nKurzus név:"+
+                getAllCourse().get(last_id).getName();
     }
 }

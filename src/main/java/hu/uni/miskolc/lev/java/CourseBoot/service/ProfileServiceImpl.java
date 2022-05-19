@@ -19,6 +19,7 @@ public class ProfileServiceImpl implements ProfileService{
     @Override
     public void addProfile(Profile profile) {
         profileRepository.save(profile);
+
     }
 
     @Override
@@ -30,4 +31,5 @@ public class ProfileServiceImpl implements ProfileService{
     public List<Profile> getAllProfile() {
         return (List<Profile>) profileRepository.findAll();
     }
+
 }
