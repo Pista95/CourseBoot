@@ -24,14 +24,6 @@ public class CourseController {
     }
     //összes kurzus listázása //
 
-    /*
-    @GetMapping("getAllCourse")
-    @ResponseBody
-    public List<Course> getAllCourse(){
-        return courseService.getAllCourse();
-    }
-    */
-
     @GetMapping(value = "/getAllCourse", produces = MediaType.TEXT_HTML_VALUE)
     @ResponseBody
     public String StudentAsHTML() {
@@ -53,6 +45,9 @@ public class CourseController {
         }
         return result;
     }
+
+
+
 
 
 
