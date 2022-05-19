@@ -8,7 +8,3 @@ Követelmény:
 frontend nem kell, postmennel elérni, postman metódusokat beletenni
 CSAK FORRÁSKÓD!! maven vagy build mappa nem kell!!!
 
------------------------------
-
-Fejlesztés: Ha a student táblában beszúrunk egy rekorot, akkor a profile táblában
-is jöjjön létre egy új rekord default adatokkal!
