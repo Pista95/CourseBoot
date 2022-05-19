@@ -27,7 +27,6 @@ function sendJSON(){
         if (xhr.readyState === 4 && xhr.status === 200) {
             // Print received data from server
             //$("result").load("getAll");
-            // alert("successful sending");
         }
     };
 
@@ -96,7 +95,6 @@ function sendCOURSEREG(){
 
             // Print received data from server
             result.innerHTML = this.responseText;
-            // alert("successful sending");
         }
     };
 
@@ -105,7 +103,5 @@ function sendCOURSEREG(){
     // Sending data with the request
     xhr.send(data);
     //alert("Sent JSON: " +data);
-    alert("Tárgy jegy beirva");
     setTimeout(document.getElementById('getallcourseregistrations').contentDocument.location.reload(true),900);
-   // location.reload();
 }
