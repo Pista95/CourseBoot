@@ -21,11 +21,9 @@ function sendJSON(){
     // Create a state change callback
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
-
             // Print received data from server
             //$("result").load("getAll");
             // alert("successful sending");
-            document.getElementById('getallstudent').contentDocument.location.reload(true);
         }
     };
 
@@ -34,6 +32,8 @@ function sendJSON(){
     // Sending data with the request
     xhr.send(data);
     // alert("Sent JSON: " +data);
+    document.getElementById('getallstudent').contentDocument.location.reload(true);
+
 }
 /////////////////////////////////////////////////////////////
 
@@ -57,16 +57,14 @@ function addCOURSE(){
         if (xhr.readyState === 4 && xhr.status === 200) {
             // Print received data from server
             //result.innerHTML = this.responseText;
-            document.getElementById('getallcourse').contentDocument.location.reload(true);
-
         }
     };
-
     // Converting JSON data to string
     var data = JSON.stringify({ "name": param1.value });
     // Sending data with the request
     xhr.send(data);
-    //alert("Sent JSON: " +data);
+    document.getElementById('getallcourse').contentDocument.location.reload(true);
+
 }
 
 /////////////////////////////////////////////////////////////
@@ -95,15 +93,14 @@ function sendCOURSEREG(){
             // Print received data from server
             result.innerHTML = this.responseText;
             // alert("successful sending");
-
         }
     };
 
     // Converting JSON data to string
     var data = JSON.stringify({ "student_id": param1.value,"course_id":param2.value, "power":param3.value} );
     // Sending data with the request
-    // if(phourexpectation.value >=1 && phourexpectation.value <=200 && pname.value.length>0) {
     xhr.send(data);
-    alert("Sent JSON: " +data);
-    // } else { alert("The hourexpectation, Employee name is not correct");}
+    //alert("Sent JSON: " +data);
+    document.getElementById('getallcourseregistrations').contentDocument.location.reload(true);
+
 }

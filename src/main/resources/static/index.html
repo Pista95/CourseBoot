@@ -35,14 +35,14 @@
     </div>
 
     <div style="float:left; width: 100% ">
-        <iframe style="float:right" width="49%" frameborder="1" scrolling="no" onload="resizeIframe(this)" id="getallcourseregistration" src="http://localhost:8090/getAllCourseRegistration"></iframe>
+        <iframe style="float:right" width="98%" frameborder="1" scrolling="no" onload="resizeIframe(this)" id="getallcourseregistrations" src="http://localhost:8090/getAllCourseRegistration"></iframe>
 
         <!--Add CourseRegistration-->
-        <h4 style="color:green;">Add CourseRegistration</h4>
+        <h4 style="color:green;">Kurzus tanulóhoz rendelése</h4>
         <input type="number" id="student_id" name="student_id" placeholder="student id" value="1">
         <input type="number" id="course_id" name="course_id" placeholder="course id" value="1">
-        <input type="number" id="power" name="power" placeholder="jegy" value="5">
-        <button onclick="sendCOURSEREG()">Add CourseReg</button>
+        <input type="hidden" id="power" name="power" placeholder="jegy" value="0" readonly>
+        <button onclick="sendCOURSEREG()">Add Course to the Student</button>
          <p class="result2" ></p>
     </div>
 
