@@ -32,6 +32,7 @@ function sendJSON(){
     // Sending data with the request
     xhr.send(data);
     // alert("Sent JSON: " +data);
+    alert("Tanuló felvéve");
     setTimeout(document.getElementById('getallstudent').contentDocument.location.reload(true),400);
 }
 /////////////////////////////////////////////////////////////
@@ -62,6 +63,7 @@ function addCOURSE(){
     var data = JSON.stringify({ "name": param1.value });
     // Sending data with the request
     xhr.send(data);
+    alert("Kurzus felvehető");
     setTimeout( document.getElementById('getallcourse').contentDocument.location.reload(true),900);
 }
 
@@ -98,7 +100,7 @@ function sendCOURSEREG(){
     var data = JSON.stringify({ "student_id": param1.value,"course_id":param2.value, "power":param3.value} );
     // Sending data with the request
     xhr.send(data);
-    //alert("Sent JSON: " +data);
+    alert("Sent JSON: " +data);
     setTimeout(document.getElementById('getallcourseregistrations').contentDocument.location.reload(true),900);
    // location.reload();
 }

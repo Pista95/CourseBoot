@@ -58,17 +58,17 @@ public class CourseRegistrationController {
         } else {
             result= "<html><header><title>getAllCourseAndStudents</title></header><body>";
             result+="Rekordok száma: " +courseRegistrationService.getAllCourseRegistration().size()+"<table border='1'>" +
-                    "<th>Sorsz.</th><th>Student id</th><th>Student név</th><th>Kurzus id</th><th>Jegy</th><!--th>Jegybeírás</th-->";
+                    "<th>Sorsz.</th><th>Student név(id)</th><th>Kurzus név (id)</th><th>Jegy</th><!--th>Jegybeírás</th-->";
          for(int i=0; i<courseRegistrationService.getAllCourseRegistration().size(); i++) {
                 result += "<tr><td>"+courseRegistrationService.getAllCourseRegistration().get(i).getCourseregistration_id()+"</td>" +
-                        "<td>"+courseRegistrationService.getAllCourseRegistration().get(i).getStudent().getStudent_id()+"</td>" +
-                        "<td>"+courseRegistrationService.getAllCourseRegistration().get(i).getStudent().getProfile().getName() +"</td>" +
-                        "<td>"+courseRegistrationService.getAllCourseRegistration().get(i).getCourse().getCourse_id()+"</td>" +
-                        "<td>"+courseRegistrationService.getAllCourseRegistration().get(i).getPower()+"</td>" +
-                       // "<td><button id='"+courseService.getAllCourse().get(i).getCourse_id()+"'>Beír</button></td>" +
-                        "<br>";
+                        "<td>"+courseRegistrationService.getAllCourseRegistration().get(i).getStudent().getProfile().getName() +
+                        "(" +courseRegistrationService.getAllCourseRegistration().get(i).getStudent().getStudent_id()+")</td>" +
+                        "<td>"+courseRegistrationService.getAllCourseRegistration().get(i).getCourse().getName() +
+                        "("+courseRegistrationService.getAllCourseRegistration().get(i).getCourse().getCourse_id()+")</td>" +
+                        "<td>"+courseRegistrationService.getAllCourseRegistration().get(i).getPower()+"</td>";
+                     //  "<td><button id='"+courseService.getAllCourse().get(i).getCourse_id()+"'>Beír</button></td>";
             }
-            result+="<tr>\n<table></body></html>";
+            result+="<tr><table></body></html>";
         }
         return result;
     }
