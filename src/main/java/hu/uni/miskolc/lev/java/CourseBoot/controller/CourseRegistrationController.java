@@ -3,6 +3,8 @@ package hu.uni.miskolc.lev.java.CourseBoot.controller;
 import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.CourseRegistration;
 import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.CourseRegistrationDTO;
 import hu.uni.miskolc.lev.java.CourseBoot.service.CourseRegistrationService;
+import hu.uni.miskolc.lev.java.CourseBoot.service.CourseService;
+import hu.uni.miskolc.lev.java.CourseBoot.service.StudentService;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,8 +17,16 @@ import java.util.List;
 @Controller
 public class CourseRegistrationController {
     private CourseRegistrationService courseRegistrationService;
-    public CourseRegistrationController(CourseRegistrationService courseRegistrationService) {
+    private StudentService studentService;
+    private CourseService courseService;
+    public CourseRegistrationController(
+            CourseRegistrationService courseRegistrationService,
+            StudentService studentService,
+            CourseService courseService
+    ) {
         this.courseRegistrationService =courseRegistrationService;
+        this.studentService=studentService;
+        this.courseService=courseService;
     }
 
     @PostMapping("addCourseRegistration")
@@ -47,12 +57,17 @@ public class CourseRegistrationController {
 
             result= "<html><header><title>getAllCourseAndStudents</title></header><body>";
             result+="Rekordok száma: " +courseRegistrationService.getAllCourseRegistration().size()+"<br><table border='1'>" +
-                    "<th>Student id</th><th>Student név</th><th>Kurzus</th><th>Jegy</th>";
-            /*for(int i=0; i<courseService.getAllCourse().size(); i++) {
-                result += "<tr><td>"+courseService.getAllCourse().get(i).getCourse_id()+"</td>" +
-                        "<td><input value='"+courseService.getAllCourse().get(i).getName()+"'></td>" +
-                        "<td><button id='"+courseService.getAllCourse().get(i).getCourse_id()+"'>Törlés</button></td>";
-            }*/
+                    "<th>Sorsz.</th><th>Student id</th><th>Kurzus id</th><th>Jegy</th>";
+         for(int i=0; i<courseRegistrationService.getAllCourseRegistration().size(); i++) {
+                result += "<tr><td>"+courseRegistrationService.getAllCourseRegistration().get(i).getCourseregistration_id()+"</td>" +
+                        "<td>"+courseRegistrationService.getAllCourseRegistration().get(i).getStudent().getStudent_id()+"</td>" +
+                        "<td>"+courseRegistrationService.getAllCourseRegistration().get(i).getCourse().getCourse_id()+"</td>" +
+                        "<td>"+courseRegistrationService.getAllCourseRegistration().get(i).getPower()+"</td>" +
+
+                        //  "<td><input value='"+courseService.getAllCourse().get(i).getName()+"'></td>" +
+                       // "<td><button id='"+courseService.getAllCourse().get(i).getCourse_id()+"'>Törlés</button></td>" +
+                        "<br>";
+            }
             result+="<tr>\n<table></body></html>";
         }
         return result;
