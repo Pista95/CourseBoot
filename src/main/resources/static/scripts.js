@@ -62,7 +62,7 @@ function addCOURSE(){
     var data = JSON.stringify({ "name": param1.value });
     // Sending data with the request
     xhr.send(data);
-    setTimeout( document.getElementById('getallcourse').contentDocument.location.reload(true),400);
+    setTimeout( document.getElementById('getallcourse').contentDocument.location.reload(true),900);
 }
 
 /////////////////////////////////////////////////////////////
@@ -99,6 +99,6 @@ function sendCOURSEREG(){
     // Sending data with the request
     xhr.send(data);
     //alert("Sent JSON: " +data);
-    setTimeout(document.getElementById('getallcourseregistrations').contentDocument.location.reload(true),400);
+    setTimeout(document.getElementById('getallcourseregistrations').contentDocument.location.reload(true),900);
    // location.reload();
 }
