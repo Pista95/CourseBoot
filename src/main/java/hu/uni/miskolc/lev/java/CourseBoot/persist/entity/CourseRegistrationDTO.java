@@ -26,7 +26,7 @@ public class CourseRegistrationDTO {
 
     public int randomgen() {
         Random rand = new Random();
-        int low = 1;
+        int low = 3;
         int high = 5;
         int result = rand.nextInt(high - low) + low;
         return result;

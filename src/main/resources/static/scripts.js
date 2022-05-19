@@ -78,7 +78,7 @@ function sendCOURSEREG(){
     let param1 = document.querySelector('#student_id');
     let param2 = document.querySelector('#course_id');
     //let param3 = document.querySelector('#power');
-    let param3 = generateRandomInteger(1,5);
+    let param3 = generateRandomInteger(3,5);
     // Creating a XHR object
     let xhr = new XMLHttpRequest();
     let url = "http://localhost:8090/addCourseRegistration";
