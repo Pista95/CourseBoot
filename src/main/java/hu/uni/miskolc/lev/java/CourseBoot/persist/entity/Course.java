@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Set;
 @Data
 @AllArgsConstructor
@@ -17,7 +18,7 @@ public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int course_id;
-    //@NotBlank
+    @NotBlank
     private String name="info";
     @OneToMany(mappedBy = "course")
      Set<CourseRegistration> courseregistration;

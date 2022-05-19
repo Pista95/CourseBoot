@@ -1,172 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
+    <meta charset="UTF-8">
     <title>
-        JavaScript | Sending JSON data to server
+        Sending JSON data to server
     </title>
+    <script type="text/javascript" src="scripts.js"></script>
+    <style>
+        div{
+            border: solid green 1px;
+            margin: 5px;
+        }
+    </style>
 </head>
 <body style="text-align:center;" id="body">
-<!--
-Add a student
--->
-<h1 style="color:green;">
-Add student
-</h1>
-<p>
-    <!-- Making a text input -->
-    <input type="email" id="email" name="email" placeholder="E-mail" value="probauser@email.hu">
-    <input type="password" id="password" name="password" placeholder="Password" value="defaultpassword">
-    <!-- Button to send data -->
-    <button onclick="sendJSON()">Add Student</button>
-    <!-- For printing result from server -->
-<p class="result" style="color:green"></p>
-</p>
+    <iframe style="float:left" width="49%" frameborder="1" scrolling="no" onload="resizeIframe(this)" id="getallstudent" src="http://localhost:8090/getAllStudent"></iframe>
+    <iframe style="float:right" width="49%" frameborder="1" scrolling="no" onload="resizeIframe(this)" id="getallcourse" src="http://localhost:8090/getAllCourse"></iframe>
 
-<!--
-Add a course
--->
-<h1 style="color:green;">
-    Add course
-</h1>
-<p>
-    <!-- Making a text input -->
-    <input type="text" id="coursename" name="coursename" placeholder="Course name" value="IT course">
-    <!-- Button to send data -->
-    <button onclick="addCOURSE()">Add course</button>
-    <!-- For printing result from server -->
-<p class="result1" style="color:green"></p>
-</p>
+    <div style="float:left; width: 100% ">
+        <div style="float:left" width="49%">
+            <h4 style="color:green;">Add student</h4>
+            <input type="email" id="email" name="email" placeholder="E-mail" value="proba@email.hu">
+            <input type="password" id="password" name="password" placeholder="Password" value="jelszo">
+            <button onclick="sendJSON()">Add Student</button>
+            <p class="result" style=""></p>
+        </div>
 
-<h1 style="color:green;">
-    Add CourseRegistration
-</h1>
-<p>
-    <!-- Making a text input -->
+        <div style="float:right" width="49%">
+            <h4 style="color:green;">Add course</h4>
+            <input type="text" id="coursename" name="coursename" placeholder="Course name" value="IT kurzus">
+            <button onclick="addCOURSE()">Add course</button>
+            <p class="result1" ></p>
+        </div>
+    </div>
+
+    <div style="float:left; width: 100% ">
+<!--Add CourseRegistration-->
+<h4 style="color:green;">Add CourseRegistration</h4>
     <input type="number" id="student_id" name="student_id" placeholder="student id" value="1">
     <input type="number" id="course_id" name="course_id" placeholder="course id" value="1">
     <input type="number" id="power" name="power" placeholder="jegy" value="5">
-    <!-- Button to send data -->
     <button onclick="sendCOURSEREG()">Add CourseReg</button>
-    <!-- For printing result from server -->
-<p class="result2" style="color:green"></p>
-</p>
-
-<!-- Include the JavaScript file -->
-<script>
-    function sendJSON(){
-
-        let result = document.querySelector('.result');
-        let param1 = document.querySelector('#email');
-        let param2 = document.querySelector('#password');
-
-        // Creating a XHR object
-        let xhr = new XMLHttpRequest();
-        let url = "http://localhost:8090/addStudent";
-
-        // open a connection
-        xhr.open("POST", url, true);
-
-        // Set the request header i.e. which type of content you are sending
-        xhr.setRequestHeader("Content-Type", "application/json");
-
-        // Create a state change callback
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-
-                // Print received data from server
-               // result.innerHTML = this.responseText;
-                //$("result").load("getAll");
-               // alert("successful sending");
-                document.getElementById('getall').contentDocument.location.reload(true);
+<p class="result2" ></p>
+    </div>
 
 
-            }
-        };
-
-        // Converting JSON data to string
-        var data = JSON.stringify({ "email": param1.value,"password":param2.value});
-        // Sending data with the request
-       // if(phourexpectation.value >=1 && phourexpectation.value <=200 && pname.value.length>0) {
-            xhr.send(data);
-            alert("Sent JSON: " +data);
-       // } else { alert("The hourexpectation, Employee name is not correct");}
-    }
-
-  /////////////////////////////////////////////////////////////
-
-    function addCOURSE(){
-
-        let result = document.querySelector('.result1');
-        let param1 = document.querySelector('#coursename');
-
-        // Creating a XHR object
-        let xhr = new XMLHttpRequest();
-        let url = "http://localhost:8090/addCourse";
-
-        // open a connection
-        xhr.open("POST", url, true);
-
-        // Set the request header i.e. which type of content you are sending
-        xhr.setRequestHeader("Content-Type", "application/json");
-
-        // Create a state change callback
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-
-                // Print received data from server
-                result.innerHTML = this.responseText;
-
-            }
-        };
-
-        // Converting JSON data to string
-        var data = JSON.stringify({ "name": param1.value });
-        // Sending data with the request
-        xhr.send(data);
-        alert("Sent JSON: " +data);
-    }
-
-    /////////////////////////////////////////////
-
-    function sendCOURSEREG(){
-
-        let result = document.querySelector('.result');
-        let param1 = document.querySelector('#student_id');
-        let param2 = document.querySelector('#course_id');
-        let param3 = document.querySelector('#power');
-
-        // Creating a XHR object
-        let xhr = new XMLHttpRequest();
-        let url = "http://localhost:8090/addCourseRegistration";
-
-        // open a connection
-        xhr.open("POST", url, true);
-
-        // Set the request header i.e. which type of content you are sending
-        xhr.setRequestHeader("Content-Type", "application/json");
-
-        // Create a state change callback
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-
-                // Print received data from server
-                result.innerHTML = this.responseText;
-                // alert("successful sending");
-
-            }
-        };
-
-        // Converting JSON data to string
-        var data = JSON.stringify({ "student_id": param1.value,"course_id":param2.value, "power":param3.value} );
-        // Sending data with the request
-        // if(phourexpectation.value >=1 && phourexpectation.value <=200 && pname.value.length>0) {
-        xhr.send(data);
-        alert("Sent JSON: " +data);
-        // } else { alert("The hourexpectation, Employee name is not correct");}
-    }
-
-</script>
-
-<iframe id="getall" src="http://localhost:8090/getAll"></iframe>
 </body>
 </html>

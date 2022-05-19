@@ -2,6 +2,7 @@ package hu.uni.miskolc.lev.java.CourseBoot.controller;
 
 import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.Course;
 import hu.uni.miskolc.lev.java.CourseBoot.service.CourseService;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,9 +23,42 @@ public class CourseController {
         courseService.addCourse(course);
     }
     //összes kurzus listázása //
+
+    /*
     @GetMapping("getAllCourse")
     @ResponseBody
     public List<Course> getAllCourse(){
         return courseService.getAllCourse();
     }
+    */
+
+    @GetMapping(value = "/getAllCourse", produces = MediaType.TEXT_HTML_VALUE)
+    @ResponseBody
+    public String StudentAsHTML() {
+        String result;
+        if (courseService.getAllCourse().size() == 0) {
+            result= "<html>\n" + "<header><title>getAllCourse</title></header>\n" +
+                    "<body>\n" + "Course táblában nincs rekord!\n" +
+                    "</body>\n" + "</html>";
+        } else {
+            result= "<html><header><title>getAllstudent</title></header><body>";
+            result+="Course rekordok száma: " + courseService.getAllCourse().size()+"<br><table border='1'>" +
+                    "<th>Kurzus id</th><th>Kurzus név</th><th>Törlés</th>";
+            for(int i=0; i<courseService.getAllCourse().size(); i++) {
+                result += "<tr><td>"+courseService.getAllCourse().get(i).getCourse_id()+"</td>" +
+                        "<td><input value='"+courseService.getAllCourse().get(i).getName()+"'></td>" +
+                      "<td><button id='"+courseService.getAllCourse().get(i).getCourse_id()+"'>Törlés</button></td>";
+            }
+            result+="<tr>\n<table></body></html>";
+        }
+        return result;
+    }
+
+
+
+
+
+
+
+
 }

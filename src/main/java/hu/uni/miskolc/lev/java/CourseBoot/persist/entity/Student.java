@@ -23,10 +23,10 @@ public class Student {
     @GeneratedValue(strategy = IDENTITY)
     private int student_id;
 
-    //@NotBlank
+    @NotBlank
     private String email="email";
 
-   // @NotBlank
+    @NotBlank
     private String password="password";
 
     @OneToMany(mappedBy = "student")
