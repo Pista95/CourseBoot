@@ -1,3 +1,7 @@
+function generateRandomInteger(min, max) {
+    return Math.floor(min + Math.random()*(max - min + 1))
+}
+
 function resizeIframe(obj) {
     obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
     obj.style.width =  obj.contentWindow.document.documentElement.scrollWidth + 'px';
@@ -74,8 +78,8 @@ function sendCOURSEREG(){
     let result = document.querySelector('.result');
     let param1 = document.querySelector('#student_id');
     let param2 = document.querySelector('#course_id');
-    let param3 = document.querySelector('#power');
-
+    //let param3 = document.querySelector('#power');
+    let param3 = generateRandomInteger(1,5);
     // Creating a XHR object
     let xhr = new XMLHttpRequest();
     let url = "http://localhost:8090/addCourseRegistration";
