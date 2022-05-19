@@ -104,7 +104,8 @@ function sendCOURSEREG(){
     var data = JSON.stringify({ "student_id": param1.value,"course_id":param2.value, "power":param3.value} );
     // Sending data with the request
     xhr.send(data);
-    alert("Sent JSON: " +data);
+    //alert("Sent JSON: " +data);
+    alert("Tárgy jegy beirva");
     setTimeout(document.getElementById('getallcourseregistrations').contentDocument.location.reload(true),900);
    // location.reload();
 }
