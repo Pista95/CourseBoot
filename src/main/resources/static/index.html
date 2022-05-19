@@ -13,39 +13,34 @@
         }
     </style>
 </head>
-<body style="text-align:center;" id="body">
-    <iframe style="float:left" width="47%" frameborder="1" scrolling="no" onload="resizeIframe(this)" id="getallstudent" src="http://localhost:8090/getAllStudent"></iframe>
-    <iframe style="float:right" width="47%" frameborder="1" scrolling="no" onload="resizeIframe(this)" id="getallcourse" src="http://localhost:8090/getAllCourse"></iframe>
-
-    <div style="float:left; width: 100% ">
-        <div style="float:left" width="49%">
-            <h4 style="color:green;">Add student</h4>
-            <input type="email" id="email" name="email" placeholder="E-mail" value="proba@email.hu">
-            <input type="password" id="password" name="password" placeholder="Password" value="jelszo">
-            <button onclick="sendJSON()">Add Student</button>
-            <p class="result" style=""></p>
-        </div>
-
-        <div style="float:right" width="49%">
-            <h4 style="color:green;">Add course</h4>
-            <input type="text" id="coursename" name="coursename" placeholder="Course name" value="IT kurzus">
-            <button onclick="addCOURSE()">Add course</button>
-            <p class="result1" ></p>
-        </div>
+<body style="text-align:center" id="body">
+    <iframe style="float:left" width="45%" frameborder="1" scrolling="no" onload="resizeIframe(this)" id="getallstudent" src="http://localhost:8090/getAllStudent"></iframe>
+    <iframe style="float:right" width="45%" frameborder="1" scrolling="no" onload="resizeIframe(this)" id="getallcourse" src="http://localhost:8090/getAllCourse"></iframe>
+    <div style="float:left; width: 99%">
+    <div style="float:left; width: 45%">
+        <h4 style="color:green;">Add student</h4>
+        <input type="email" id="email" name="email" placeholder="E-mail" value="proba@email.hu">
+        <input type="password" id="password" name="password" placeholder="Password" value="jelszo">
+        <button onclick="sendJSON()">Add Student</button>
+        <p class="result" style=""></p>
     </div>
+    <div style="float:right; width: 45%">
+        <h4 style="color:green;" width="45%">Add course</h4>
+        <input type="text" id="coursename" name="coursename" placeholder="Course name" value="IT kurzus">
+        <button onclick="addCOURSE()">Add course</button>
+        <p class="result1" ></p>
+    </div>
+    </div>
+    <iframe style="float:left; width: 99%" frameborder="1" scrolling="no" onload="resizeIframe(this)" id="getallcourseregistrations" src="http://localhost:8090/getAllCourseRegistration"></iframe>
 
-    <div style="float:left; width: 100% ">
-        <iframe style="float:right" width="98%" frameborder="1" scrolling="no" onload="resizeIframe(this)" id="getallcourseregistrations" src="http://localhost:8090/getAllCourseRegistration"></iframe>
-
+    <div style="float:left; width: 99%">
         <!--Add CourseRegistration-->
         <h4 style="color:green;">Kurzus tanulóhoz rendelése</h4>
         <input type="number" id="student_id" name="student_id" placeholder="student id" value="1">
         <input type="number" id="course_id" name="course_id" placeholder="course id" value="1">
         <input type="hidden" id="power" name="power" placeholder="jegy" value="0" readonly>
         <button onclick="sendCOURSEREG()">Add Course to the Student</button>
-         <p class="result2" ></p>
+        <p class="result2" ></p>
     </div>
-
-
 </body>
 </html>

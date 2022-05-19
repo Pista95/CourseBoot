@@ -21,6 +21,6 @@ public class CourseRegistrationDTO {
     // LocalDateTime registeredAt;
     @Min(0)
     @Max(5)
-    private int power=0;
+    private int power;
 
 }

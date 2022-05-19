@@ -45,7 +45,7 @@ public class StudentController {
                     "</body>\n" + "</html>";
         } else {
              result= "<html><header><title>getAllstudent</title></header><body>";
-             result+="Student and Course table join (rekordok száma: " + studentService.getAllStudent().size()+")<br><table border='1'>" +
+             result+="Student/Prfile (rekordok száma: " + studentService.getAllStudent().size()+")<br><table align='center' border='1'>" +
                      "<th>Student id</th><th>Student név</th><th>E-mail</th><th>Törlés</th>";
              for(int i=0; i<studentService.getAllStudent().size(); i++) {
                  result += "<tr><td>"+ studentService.getAllStudent().get(i).getStudent_id()+"</td>" +
