@@ -25,11 +25,15 @@ public class CourseRegistrationController {
     }
 
 
-
+    /*
     @GetMapping("getAllCourseRegistration")
     @ResponseBody
     public List<CourseRegistration> getAllCourseRegistration(){
-
         return courseRegistrationService.getAllCourseRegistration();
     }
+     */
+
+
+
+
 }
