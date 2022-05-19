@@ -28,12 +28,7 @@ public class CourseRegistration {
     @JoinColumn(name = "course_id")
     private Course course;
    // LocalDateTime registeredAt;
-    private int power= randomgen();
-    public int randomgen() {
-        Random rand = new Random();
-        int low = 1;
-        int high = 5;
-        int result = rand.nextInt(high - low) + low;
-        return result;
-    }
+    @Min(0)
+    @Max(5)
+    private int power;
 }
