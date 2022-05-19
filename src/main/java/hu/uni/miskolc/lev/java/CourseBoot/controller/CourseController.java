@@ -1,5 +1,6 @@
 package hu.uni.miskolc.lev.java.CourseBoot.controller;
 
+import hu.uni.miskolc.lev.java.CourseBoot.persist.CourseRepository;
 import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.Course;
 import hu.uni.miskolc.lev.java.CourseBoot.service.CourseService;
 import hu.uni.miskolc.lev.java.CourseBoot.service.ProfileService;
@@ -22,6 +23,13 @@ public class CourseController {
     public void addCourse(@RequestBody Course course){
         courseService.addCourse(course);
     }
+
+    @PostMapping("deleteCourse")
+    @ResponseBody
+    public void deleteEmployer(@RequestBody Course course){
+        courseService.deleteCourse(course);
+    }
+
     //összes kurzus listázása //
 
     @GetMapping(value = "/getAllCourse", produces = MediaType.TEXT_HTML_VALUE)
