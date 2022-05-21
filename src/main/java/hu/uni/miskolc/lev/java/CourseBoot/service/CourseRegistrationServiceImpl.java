@@ -34,6 +34,15 @@ public class CourseRegistrationServiceImpl implements CourseRegistrationService 
         courseregistration.setCourse(courseRepository.findById(courseregistrationDTO.getCourse_id()).get());
         courseregistration.setStudent(studentRepository.findById(courseregistrationDTO.getStudent_id()).get());
         courseRegistrationRepository.save(courseregistration);
+        System.out.println(lastCourseReg());
+    }
+
+    public String lastCourseReg(){
+        int last_id=getAllCourseRegistration().size()-1;
+        return "============== Tárgyfelvétel ==============\n" +
+                getAllCourseRegistration().get(last_id).getStudent().getProfile().getName()+ "felvette " +
+                "a(z) "+getAllCourseRegistration().get(last_id).getCourse().getName() + "kurzust\n" +
+                "és az alábbi osztályzatot kapta: "+ getAllCourseRegistration().get(last_id).getPower();
     }
 
     public void deleteCourseRegistration(CourseRegistration courseRegistration){
