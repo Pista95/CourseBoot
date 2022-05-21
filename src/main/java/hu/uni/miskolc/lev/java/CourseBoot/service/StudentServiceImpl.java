@@ -11,9 +11,8 @@ import java.util.List;
 
 @Service
 public class StudentServiceImpl implements StudentService{
-    private ProfileRepository profileRepository;
+    private final ProfileRepository profileRepository;
     private static StudentRepository studentRepository;
-
     @Autowired
     public StudentServiceImpl(StudentRepository studentRepository, ProfileRepository profileRepository) {
         this.studentRepository = studentRepository;
@@ -22,13 +21,12 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public void addStudent(Student student) {
-       // studentRepository.save(student);
+        // studentRepository.save(student);
         student = studentRepository.save(student);
         Profile profile = new Profile();
         profile.setStudent(student);
         profileRepository.save(profile);
         //System.out.println("Profile obj.:"+profile);
-
         System.out.println(lastStudent());
     }
 
@@ -41,18 +39,8 @@ public class StudentServiceImpl implements StudentService{
                 getAllStudent().get(last_id).getEmail()+
                 "\njelszó:***********";
     }
-    /*
-    public void tanulokListazasa(){
-        //return StudentService.getAllStudent().toString();
-        System.out.println("============== Felvett Tanuló ==============");
-        for (int i = getAllStudent().size()-1; i < getAllStudent().size(); i++) {
-            System.out.println(
-                    "Tanuló id: "+getAllStudent().get(i).getStudent_id()
-                            +"\nE-mail: "+getAllStudent().get(i).getEmail()
-                            +"\nJelszó: "+getAllStudent().get(i).getPassword()+"\n"
-            );
-        }
 
+    public void tanulokListazasa(){
         System.out.println("============== Összes Tanuló ==============");
         for (int i =0; i < getAllStudent().size(); i++) {
             System.out.println(
@@ -61,11 +49,7 @@ public class StudentServiceImpl implements StudentService{
                             +"\nJelszó: "+getAllStudent().get(i).getPassword()+"\n"
             );
         }
-
-
     }
-
-     */
 
     public List<Student> getAllStudent() {
 

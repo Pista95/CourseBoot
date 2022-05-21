@@ -14,8 +14,8 @@ import java.util.List;
 
 @Controller
 public class StudentController {
-    private StudentService studentService;
-    private ProfileService profileService;
+    private final StudentService studentService;
+    private final ProfileService profileService;
 
     public StudentController(StudentService studentService,ProfileService profileService) {
         this.studentService = studentService;

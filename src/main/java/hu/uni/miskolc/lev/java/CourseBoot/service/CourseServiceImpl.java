@@ -9,7 +9,7 @@ import java.util.List;
 
 @Service
 public class CourseServiceImpl implements CourseService{
-    private CourseRepository courseRepository;
+    private final CourseRepository courseRepository;
 
     @Autowired
     public CourseServiceImpl(CourseRepository courseRepository) {

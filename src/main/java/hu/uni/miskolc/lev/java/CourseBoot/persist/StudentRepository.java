@@ -5,8 +5,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface StudentRepository extends CrudRepository<Student, Integer> {
-       // List<Student> findAllByStudent_id (int studentId);
-    }
+public interface StudentRepository extends CrudRepository<Student, Integer> { }
 
 

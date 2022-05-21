@@ -8,7 +8,7 @@ import java.util.List;
 
 @Service
 public class ProfileServiceImpl implements ProfileService{
-    private ProfileRepository profileRepository;
+    private final ProfileRepository profileRepository;
 
     @Autowired
     public ProfileServiceImpl(ProfileRepository profileRepository) {

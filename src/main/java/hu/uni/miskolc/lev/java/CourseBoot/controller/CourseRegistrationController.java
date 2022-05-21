@@ -1,12 +1,8 @@
 package hu.uni.miskolc.lev.java.CourseBoot.controller;
 
-import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.Course;
 import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.CourseRegistration;
 import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.CourseRegistrationDTO;
 import hu.uni.miskolc.lev.java.CourseBoot.service.CourseRegistrationService;
-import hu.uni.miskolc.lev.java.CourseBoot.service.CourseService;
-import hu.uni.miskolc.lev.java.CourseBoot.service.ProfileService;
-import hu.uni.miskolc.lev.java.CourseBoot.service.StudentService;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,22 +10,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.List;
-
 @Controller
 public class CourseRegistrationController {
-    private CourseRegistrationService courseRegistrationService;
-    private StudentService studentService;
-    private CourseService courseService;
-    public CourseRegistrationController(
-            CourseRegistrationService courseRegistrationService,
-            StudentService studentService,
-            CourseService courseService,
-            ProfileService profileService
-    ) {
+    private final CourseRegistrationService courseRegistrationService;
+
+    public CourseRegistrationController( CourseRegistrationService courseRegistrationService) {
         this.courseRegistrationService =courseRegistrationService;
-        this.studentService=studentService;
-        this.courseService=courseService;
     }
 
     @PostMapping("addCourseRegistration")
@@ -69,8 +55,4 @@ public class CourseRegistrationController {
         }
         return result;
     }
-
-
-
-
 }

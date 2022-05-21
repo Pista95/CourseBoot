@@ -12,9 +12,9 @@ import java.util.List;
 @Service
 public class CourseRegistrationServiceImpl implements CourseRegistrationService {
 
-    private CourseRegistrationRepository courseRegistrationRepository;
-    private CourseRepository courseRepository;
-    private StudentRepository studentRepository;
+    private final CourseRegistrationRepository courseRegistrationRepository;
+    private final CourseRepository courseRepository;
+    private final StudentRepository studentRepository;
 
     @Autowired
     public CourseRegistrationServiceImpl(CourseRegistrationRepository courseRegistrationRepository,
@@ -31,8 +31,12 @@ public class CourseRegistrationServiceImpl implements CourseRegistrationService 
         CourseRegistration courseregistration= new CourseRegistration();
         courseregistration.setPower(courseregistrationDTO.getPower());
         courseregistration.setRegisteredAt(courseregistrationDTO.getRegisteredAt());
-        courseregistration.setCourse(courseRepository.findById(courseregistrationDTO.getCourse_id()).get());
-        courseregistration.setStudent(studentRepository.findById(courseregistrationDTO.getStudent_id()).get());
+        if(courseRepository.findById(courseregistrationDTO.getCourse_id()).isPresent()) {
+            courseregistration.setCourse(courseRepository.findById(courseregistrationDTO.getCourse_id()).get());
+        }
+        if(studentRepository.findById(courseregistrationDTO.getStudent_id()).isPresent()) {
+            courseregistration.setStudent(studentRepository.findById(courseregistrationDTO.getStudent_id()).get());
+        }
         courseRegistrationRepository.save(courseregistration);
         System.out.println(lastCourseReg());
     }
@@ -40,7 +44,7 @@ public class CourseRegistrationServiceImpl implements CourseRegistrationService 
     public String lastCourseReg(){
         int last_id=getAllCourseRegistration().size()-1;
         return "============== Tárgyfelvétel ==============\n" +
-                getAllCourseRegistration().get(last_id).getStudent().getProfile().getName()+ "felvette " +
+                getAllCourseRegistration().get(last_id).getStudent().getProfile().getName()+ " felvette " +
                 "a(z) "+getAllCourseRegistration().get(last_id).getCourse().getName() + "kurzust\n" +
                 "és az alábbi osztályzatot kapta: "+ getAllCourseRegistration().get(last_id).getPower();
     }

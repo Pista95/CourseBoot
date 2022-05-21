@@ -1,9 +1,7 @@
 package hu.uni.miskolc.lev.java.CourseBoot.controller;
 
-import hu.uni.miskolc.lev.java.CourseBoot.persist.CourseRepository;
 import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.Course;
 import hu.uni.miskolc.lev.java.CourseBoot.service.CourseService;
-import hu.uni.miskolc.lev.java.CourseBoot.service.ProfileService;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,8 +31,7 @@ public class CourseController {
     @PostMapping("deleteCourseById")
     @ResponseBody
     public void deleteCourseById(@RequestBody int course_id){
-        int c = course_id;
-        courseService.deleteCourseById(c);
+        courseService.deleteCourseById(course_id);
     }
 
     //összes kurzus listázása //
