@@ -103,5 +103,6 @@ function sendCOURSEREG(){
     // Sending data with the request
     xhr.send(data);
     //alert("Sent JSON: " +data);
+    alert("Kurzus tanulóhoz rendelve");
     setTimeout(document.getElementById('getallcourseregistrations').contentDocument.location.reload(true),900);
 }

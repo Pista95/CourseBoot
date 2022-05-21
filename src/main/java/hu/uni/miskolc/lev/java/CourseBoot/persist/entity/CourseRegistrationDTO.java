@@ -8,6 +8,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 @Data
@@ -19,17 +22,15 @@ public class CourseRegistrationDTO {
 
     private int student_id=1;
     private int course_id=1;
-    // LocalDateTime registeredAt;
+    LocalDateTime registeredAt= LocalDateTime.now();
     @Min(0)
     @Max(5)
-    private int power=randomgen();
+    private int power=randomPower();
 
-    public int randomgen() {
+    public int randomPower() {
+        List<Integer> givenList = Arrays.asList( 2, 3,4,5);
         Random rand = new Random();
-        int low = 3;
-        int high = 5;
-        int result = rand.nextInt(high - low) + low;
-        return result;
+        return givenList.get(rand.nextInt(givenList.size()));
     }
 
 }

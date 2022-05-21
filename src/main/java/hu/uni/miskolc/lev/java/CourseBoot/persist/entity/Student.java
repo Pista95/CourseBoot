@@ -29,7 +29,7 @@ public class Student {
     @NotBlank
     private String password="password";
 
-    @OneToMany(mappedBy = "student")
+    @OneToMany(mappedBy = "student" , cascade = CascadeType.ALL)
     Set<CourseRegistration> courseregistration;
 
     @OneToOne(mappedBy = "student")

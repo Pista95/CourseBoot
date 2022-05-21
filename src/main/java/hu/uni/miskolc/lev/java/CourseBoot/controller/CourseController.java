@@ -26,8 +26,15 @@ public class CourseController {
 
     @PostMapping("deleteCourse")
     @ResponseBody
-    public void deleteEmployer(@RequestBody Course course){
+    public void deleteCourseById(@RequestBody Course course){
         courseService.deleteCourse(course);
+    }
+
+    @PostMapping("deleteCourseById")
+    @ResponseBody
+    public void deleteCourseById(@RequestBody int course_id){
+        int c = course_id;
+        courseService.deleteCourseById(c);
     }
 
     //összes kurzus listázása //

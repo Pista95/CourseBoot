@@ -20,10 +20,14 @@ public class CourseServiceImpl implements CourseService{
         courseRepository.save(course);
         System.out.println(lastCourse());
     }
-
     @Override
     public void deleteCourse(Course course) {
         courseRepository.delete(course);
+    }
+    @Override
+    public void deleteCourseById(int course_id) {
+        // TODO Auto-generated method stub
+        courseRepository.deleteById(course_id);
     }
 
     @Override

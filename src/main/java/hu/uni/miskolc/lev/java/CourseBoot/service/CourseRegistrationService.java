@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface CourseRegistrationService {
     void addCourseRegistration(CourseRegistrationDTO courseregistrationDTO);
+    void deleteCourseRegistration(CourseRegistration courseRegistration);
     List<CourseRegistration> getAllCourseRegistration();
 }

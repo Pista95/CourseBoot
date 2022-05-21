@@ -19,14 +19,14 @@
     <div style="float:left; width: 99%">
     <div style="float:left; width: 45%">
         <h4 style="color:green;">Add student</h4>
-        <input type="email" id="email" name="email" placeholder="E-mail" value="proba@email.hu">
-        <input type="password" id="password" name="password" placeholder="Password" value="jelszo">
+        E-mail:<input type="email" id="email" name="email" placeholder="E-mail" value="proba@email.hu">
+        Jelszó:<input type="password" id="password" name="password" placeholder="Password" value="jelszo">
         <button onclick="sendJSON()">Add Student</button>
         <p class="result" style=""></p>
     </div>
     <div style="float:right; width: 45%">
         <h4 style="color:green;" width="45%">Add course</h4>
-        <input type="text" id="coursename" name="coursename" placeholder="Course name" value="IT kurzus">
+        Kurzus név:<input type="text" id="coursename" name="coursename" placeholder="Course name" value="IT kurzus">
         <button onclick="addCOURSE()">Add course</button>
         <p class="result1" ></p>
     </div>
@@ -34,8 +34,8 @@
     <div style="float:left; width: 99%">
         <!--Add CourseRegistration-->
         <h4 style="color:green;">Kurzus tanulóhoz rendelése</h4>
-        <input type="number" id="student_id" name="student_id" placeholder="student id" value="">
-        <input type="number" id="course_id" name="course_id" placeholder="course id" value="">
+        Tanuló id:<input type="number" id="student_id" name="student_id" placeholder="student id" value="1">
+        Kurzus id:<input type="number" id="course_id" name="course_id" placeholder="course id" value="1">
         <input type="hidden" id="power" name="power" placeholder="jegy" value="0" readonly>
         <button onclick="sendCOURSEREG()">Add Course to the Student</button>
         <p class="result2" ></p>

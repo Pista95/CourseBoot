@@ -30,12 +30,14 @@ public class CourseRegistrationServiceImpl implements CourseRegistrationService 
 
         CourseRegistration courseregistration= new CourseRegistration();
         courseregistration.setPower(courseregistrationDTO.getPower());
-        //System.out.println("Kiir:\r\n"+courseregistrationDTO.getPower()+"\r\n");
-        //employee.setEmployer(employerRepository.findById(employeeDTO.getEmployer_id()).get());
+        courseregistration.setRegisteredAt(courseregistrationDTO.getRegisteredAt());
         courseregistration.setCourse(courseRepository.findById(courseregistrationDTO.getCourse_id()).get());
         courseregistration.setStudent(studentRepository.findById(courseregistrationDTO.getStudent_id()).get());
         courseRegistrationRepository.save(courseregistration);
-        System.out.println("Hiba"+courseregistration);
+    }
+
+    public void deleteCourseRegistration(CourseRegistration courseRegistration){
+        courseRegistrationRepository.delete(courseRegistration);
     }
 
     @Override

@@ -8,6 +8,7 @@ import lombok.ToString;
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import java.time.LocalDateTime;
 import java.util.Random;
 
 @Data
@@ -20,14 +21,14 @@ public class CourseRegistration {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long courseregistration_id;
+    private int courseregistration_id;
     @ManyToOne
     @JoinColumn(name = "student_id")
     private Student student;
     @ManyToOne
     @JoinColumn(name = "course_id")
     private Course course;
-   // LocalDateTime registeredAt;
+    LocalDateTime registeredAt;
     @Min(0)
     @Max(5)
     private int power;

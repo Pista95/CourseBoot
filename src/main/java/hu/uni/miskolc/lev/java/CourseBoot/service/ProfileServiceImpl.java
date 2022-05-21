@@ -15,18 +15,6 @@ public class ProfileServiceImpl implements ProfileService{
         this.profileRepository = profileRepository;
     }
 
-
-    @Override
-    public void addProfile(Profile profile) {
-        profileRepository.save(profile);
-
-    }
-
-    @Override
-    public void deleteProfile(Profile profile) {
-        profileRepository.delete(profile);
-    }
-
     @Override
     public List<Profile> getAllProfile() {
         return (List<Profile>) profileRepository.findAll();

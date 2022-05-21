@@ -1,5 +1,6 @@
 package hu.uni.miskolc.lev.java.CourseBoot.controller;
 
+import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.Course;
 import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.CourseRegistration;
 import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.CourseRegistrationDTO;
 import hu.uni.miskolc.lev.java.CourseBoot.service.CourseRegistrationService;
@@ -36,15 +37,11 @@ public class CourseRegistrationController {
     public void addCourseRegistration(@RequestBody CourseRegistrationDTO courseregistrationdto){
         courseRegistrationService.addCourseRegistration(courseregistrationdto);
     }
-
-
-    /*
-    @GetMapping("getAllCourseRegistration")
+    @PostMapping("deleteCourseRegistration")
     @ResponseBody
-    public List<CourseRegistration> getAllCourseRegistration(){
-        return courseRegistrationService.getAllCourseRegistration();
+    public void deleteCourseRegistration(@RequestBody CourseRegistration courseRegistration){
+       courseRegistrationService.deleteCourseRegistration(courseRegistration);
     }
-     */
 
     @GetMapping(value = "/getAllCourseRegistration", produces = MediaType.TEXT_HTML_VALUE)
     @ResponseBody

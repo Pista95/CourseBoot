@@ -8,6 +8,9 @@ import lombok.ToString;
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 @Data
 @AllArgsConstructor
@@ -21,7 +24,7 @@ public class Profile {
     private int pofile_id;
 
     //@NotBlank
-    private String name="default name";
+    private String name=randN();
 
     //@Min(18)
     private int age=18;
@@ -29,4 +32,16 @@ public class Profile {
     @MapsId
     @JoinColumn(name = "pofile_id")
     private Student student;
+
+    public String randN() {
+        Random rand = new Random();
+        List<String> givenList = Arrays.asList("Péter", "István", "János", "Ádám","Ferenc","Miklós");
+        int numberOfElements = 6;
+        String randomElement = null;
+        for (int i = 0; i < numberOfElements; i++) {
+            int randomIndex = rand.nextInt(givenList.size());
+            randomElement = givenList.get(randomIndex);
+        }
+        return randomElement;
+    }
 }

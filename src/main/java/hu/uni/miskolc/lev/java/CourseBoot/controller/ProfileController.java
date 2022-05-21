@@ -17,12 +17,6 @@ public class ProfileController {
         this.profileService = profileService;
     }
 
-    @PostMapping("addProfile")
-    @ResponseBody
-    public void addProfile(@RequestBody Profile profile){
-        profileService.addProfile(profile);
-    }
-
     @GetMapping("getAllProfile")
     @ResponseBody
     public List<Profile> getAllProfile(){
