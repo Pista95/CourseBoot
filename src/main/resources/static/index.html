@@ -6,6 +6,7 @@
         Sending JSON data to server
     </title>
     <script type="text/javascript" src="scripts.js"></script>
+
     <style>
         iframe, div{
             border: solid green 1px;
@@ -13,9 +14,12 @@
         }
     </style>
 </head>
-<body style="text-align:center" id="body">
-    <iframe style="float:left" width="45%" frameborder="1" scrolling="no" onload="resizeIframe(this)" id="getallstudent" src="http://localhost:8090/getAllStudent"></iframe>
-    <iframe style="float:right" width="45%" frameborder="1" scrolling="no" onload="resizeIframe(this)" id="getallcourse" src="http://localhost:8090/getAllCourse"></iframe>
+<body style="text-align:center" id="body" onload="loadpages()">
+    <div style="float:left; width: 45%" id="getallstudent"></div>
+    <div style="float:right; width: 45%" id="getallcourse"></div>
+    <!--iframe style="float:left" width="45%" frameborder="1" scrolling="no" onload="resizeIframe(this)" id="getallstudent" src="http://localhost:8090/getAllStudent"></iframe-->
+    <!--iframe style="float:right" width="45%" frameborder="1" scrolling="no" onload="resizeIframe(this)" id="getallcourse" src="http://localhost:8090/getAllCourse"></iframe-->
+
     <div style="float:left; width: 99%">
     <div style="float:left; width: 45%">
         <h4 style="color:green;">Add student</h4>
@@ -25,7 +29,7 @@
         <p class="result" style=""></p>
     </div>
     <div style="float:right; width: 45%">
-        <h4 style="color:green;" width="45%">Add course</h4>
+        <h4 style="color:green; width:45%">Add course</h4>
         Kurzus név:<input type="text" id="coursename" name="coursename" placeholder="Course name" value="IT kurzus">
         <button onclick="addCOURSE()">Add course</button>
         <p class="result1" ></p>
@@ -40,7 +44,42 @@
         <button onclick="sendCOURSEREG()">Add Course to the Student</button>
         <p class="result2" ></p>
     </div>
-    <iframe style="float:left; width: 99%" frameborder="1" scrolling="no" onload="resizeIframe(this)" id="getallcourseregistrations" src="http://localhost:8090/getAllCourseRegistration"></iframe>
+    <!--iframe style="float:left; width: 99%" frameborder="1" scrolling="no" onload="resizeIframe(this)" id="getallcourseregistrations" src="http://localhost:8090/getAllCourseRegistration"></iframe-->
+    <div style="float:left; width: 98%" id="getallcourseregistrations"></div>
+
+
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script>
+        function sendJsonToDeleteCourseReg(id){
+            // Creating a XHR object
+            let xhr = new XMLHttpRequest();
+            let url = "http://localhost:8090/deleteCourseRegistration";
+
+            // open a connection
+            xhr.open("POST", url, true);
+
+            // Set the request header i.e. which type of content you are sending
+            xhr.setRequestHeader("Content-Type", "application/json");
+
+            // Create a state change callback
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Print received data from server
+                   $("#getallcourseregistrations").load("http://localhost:8090/getAllCourseRegistration");
+                }
+            };
+
+            // Converting JSON data to string
+            let data = JSON.stringify({ "courseregistration_id": id});
+            // Sending data with the request
+            xhr.send(data);
+        }
+    </script>
+
+
+
+
 
 </body>
 </html>

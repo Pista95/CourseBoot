@@ -39,17 +39,19 @@ public class CourseRegistrationController {
                     "kérjük rendelje a tanulókhoz az órarend szerinti kurzus id-ket!\n" +
                     "</body>\n" + "</html>";
         } else {
-            result= "<html><header><title>getAllCourseAndStudents</title></header><body>";
+            result= "<html><header><title>getAllCourseAndStudents</title>" +
+                    "" +
+                    "</header><body>";
             result+="Kurzus fevétel, kapcsoló tábla (rekordok száma: " +courseRegistrationService.getAllCourseRegistration().size()+")<table align='center' border='1'>" +
-                    "<th>Sorsz.</th><th>Student név (id)</th><th>Kurzus név (id)</th><th>Jegy</th><!--th>Jegybeírás</th-->";
+                    "<th>Sorsz.</th><th>Student név (id)</th><th>Kurzus név (id)</th><th>Jegy</th><!--th>Jegybeírás</th--><th>Töröl</th>";
          for(int i=0; i<courseRegistrationService.getAllCourseRegistration().size(); i++) {
                 result += "<tr><td>"+courseRegistrationService.getAllCourseRegistration().get(i).getCourseregistration_id()+"</td>" +
                         "<td>"+courseRegistrationService.getAllCourseRegistration().get(i).getStudent().getProfile().getName() +
                         "(" +courseRegistrationService.getAllCourseRegistration().get(i).getStudent().getStudent_id()+")</td>" +
                         "<td>"+courseRegistrationService.getAllCourseRegistration().get(i).getCourse().getName() +
                         "("+courseRegistrationService.getAllCourseRegistration().get(i).getCourse().getCourse_id()+")</td>" +
-                        "<td>"+courseRegistrationService.getAllCourseRegistration().get(i).getPower()+"</td>";
-                     //  "<td><button id='"+courseService.getAllCourse().get(i).getCourse_id()+"'>Beír</button></td>";
+                        "<td>"+courseRegistrationService.getAllCourseRegistration().get(i).getPower()+"</td>"+
+                        "<td><button onclick='sendJsonToDeleteCourseReg(this.id)' id='"+courseRegistrationService.getAllCourseRegistration().get(i).getCourseregistration_id()+"'>Töröl</button></td>";
             }
             result+="<tr><table></body></html>";
         }

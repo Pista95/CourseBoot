@@ -1,14 +1,19 @@
-function generateRandomInteger(min, max) {
-    return Math.floor(min + Math.random()*(max - min + 1))
+function loadpages(){
+    $("#getallstudent").load("http://localhost:8090/getAllStudent");
+    $("#getallcourse").load("http://localhost:8090/getAllCourse");
+    $("#getallcourseregistrations").load("http://localhost:8090/getAllCourseRegistration");
 }
-
+function generateRandomInteger(min, max) {
+    return Math.floor(min + Math.random() * (max - min + 1))
+}
+/*
 function resizeIframe(obj) {
     obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
     obj.style.width =  obj.contentWindow.document.documentElement.scrollWidth + 'px';
 }
+*/
 function sendJSON(){
 
-    let result = document.querySelector('.result');
     let param1 = document.querySelector('#email');
     let param2 = document.querySelector('#password');
 
@@ -26,23 +31,22 @@ function sendJSON(){
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             // Print received data from server
-            //$("result").load("getAll");
+            $("#getallstudent").load("http://localhost:8090/getAllStudent");
         }
     };
 
     // Converting JSON data to string
-    var data = JSON.stringify({ "email": param1.value,"password":param2.value});
+    let data = JSON.stringify({ "email": param1.value,"password":param2.value});
     // Sending data with the request
     xhr.send(data);
     // alert("Sent JSON: " +data);
     alert("Tanuló felvéve");
-    setTimeout(document.getElementById('getallstudent').contentDocument.location.reload(true),400);
+    //setTimeout(document.getElementById('getallstudent').contentDocument.location.reload(true),400);
 }
 /////////////////////////////////////////////////////////////
 
 function addCOURSE(){
 
-    let result = document.querySelector('.result1');
     let param1 = document.querySelector('#coursename');
 
     // Creating a XHR object
@@ -60,21 +64,21 @@ function addCOURSE(){
         if (xhr.readyState === 4 && xhr.status === 200) {
             // Print received data from server
             //result.innerHTML = this.responseText;
+            $("#getallcourse").load("http://localhost:8090/getAllCourse");
         }
     };
     // Converting JSON data to string
-    var data = JSON.stringify({ "name": param1.value });
+    let data = JSON.stringify({ "name": param1.value });
     // Sending data with the request
     xhr.send(data);
     alert("Kurzus felvehető");
-    setTimeout( document.getElementById('getallcourse').contentDocument.location.reload(true),900);
+    //setTimeout( document.getElementById('getallcourse').contentDocument.location.reload(true),900);
 }
 
 /////////////////////////////////////////////////////////////
 
 function sendCOURSEREG(){
 
-    let result = document.querySelector('.result');
     let param1 = document.querySelector('#student_id');
     let param2 = document.querySelector('#course_id');
     //let param3 = document.querySelector('#power');
@@ -94,15 +98,16 @@ function sendCOURSEREG(){
         if (xhr.readyState === 4 && xhr.status === 200) {
 
             // Print received data from server
-            result.innerHTML = this.responseText;
+            //result.innerHTML = this.responseText;
+            $("#getallcourseregistrations").load("http://localhost:8090/getAllCourseRegistration");
         }
     };
 
     // Converting JSON data to string
-    var data = JSON.stringify({ "student_id": param1.value,"course_id":param2.value, "power":param3.value} );
+    let data = JSON.stringify({ "student_id": param1.value,"course_id":param2.value, "power":param3.value} );
     // Sending data with the request
     xhr.send(data);
     //alert("Sent JSON: " +data);
-    alert("Kurzus tanulóhoz rendelve");
-    setTimeout(document.getElementById('getallcourseregistrations').contentDocument.location.reload(true),900);
+     alert("Kurzus tanulóhoz rendelve");
+    //setTimeout(document.getElementById('getallcourseregistrations').contentDocument.location.reload(true),900);
 }
