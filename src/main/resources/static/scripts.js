@@ -2,6 +2,8 @@ function loadpages(){
     $("#getallstudent").load("http://localhost:8090/getAllStudent");
     $("#getallcourse").load("http://localhost:8090/getAllCourse");
     $("#getallcourseregistrations").load("http://localhost:8090/getAllCourseRegistration");
+    $("#description").load("http://localhost:8090/readme");
+
 }
 function generateRandomInteger(min, max) {
     return Math.floor(min + Math.random() * (max - min + 1))

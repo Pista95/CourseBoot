@@ -15,8 +15,10 @@
     </style>
 </head>
 <body style="text-align:center" id="body" onload="loadpages()">
-    <div style="float:left; width: 45%" id="getallstudent"></div>
-    <div style="float:right; width: 45%" id="getallcourse"></div>
+<h3 style="color: green">Spring Boot alkalmazás</h3>
+    <div id="description" style="text-align: justify; padding: 10px"></div>
+    <div style="float:left; width: 45%; background-color: aqua" id="getallstudent"></div>
+    <div style="float:right; width: 45%; background-color: aqua" id="getallcourse"></div>
     <div style="float:left; width: 99%">
     <div style="float:left; width: 45%">
         <h4 style="color:green;">Add student</h4>
@@ -38,6 +40,6 @@
         <input type="hidden" id="power" name="power" placeholder="jegy" value="0" readonly>
         <button onclick="sendCOURSEREG()">Add Course to the Student</button>
     </div>
-    <div style="float:left; width: 100%" id="getallcourseregistrations"></div>
+    <div style="float:left; width: 100%; background-color: aqua" id="getallcourseregistrations"></div>
 </body>
 </html>
