@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class StudentServiceImpl implements StudentService{
     private final ProfileRepository profileRepository;
-    private static StudentRepository studentRepository;
+    private final StudentRepository studentRepository;
     @Autowired
     public StudentServiceImpl(StudentRepository studentRepository, ProfileRepository profileRepository) {
         this.studentRepository = studentRepository;
@@ -26,18 +26,17 @@ public class StudentServiceImpl implements StudentService{
         Profile profile = new Profile();
         profile.setStudent(student);
         profileRepository.save(profile);
-        //System.out.println("Profile obj.:"+profile);
-        System.out.println(lastStudent());
+        System.out.println(lastStudent(student));
     }
 
-    public String lastStudent(){
+    public String lastStudent(Student student){
         int last_id=getAllStudent().size()-1;
         return "============== Felvett Tanuló ==============\n" +
                 "Tanuló id:"+
                 getAllStudent().get(last_id).getStudent_id()+
                 "\ne-mail:"+
                 getAllStudent().get(last_id).getEmail()+
-                "\njelszó:***********";
+                "\njelszó:***********\n"+student.toString()+"\n";
     }
 
     public void tanulokListazasa(){

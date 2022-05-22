@@ -26,7 +26,7 @@ public class CourseRegistrationDTO {
     private int power=randomPower();
 
     public int randomPower() {
-        List<Integer> givenList = Arrays.asList( 2, 3,4,5);
+        List<Integer> givenList = Arrays.asList(3,4,5);
         Random rand = new Random();
         return givenList.get(rand.nextInt(givenList.size()));
     }
