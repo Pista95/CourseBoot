@@ -39,9 +39,7 @@ public class CourseRegistrationController {
                     "kérjük rendelje a tanulókhoz az órarend szerinti kurzus id-ket!\n" +
                     "</body>\n" + "</html>";
         } else {
-            result= "<html><header><title>getAllCourseAndStudents</title>" +
-                    "" +
-                    "</header><body>";
+            result= "<html><header><title>getAllCourseAndStudents</title></header><body>";
             result+="Kurzus fevétel, kapcsoló tábla (rekordok száma: " +courseRegistrationService.getAllCourseRegistration().size()+")<table align='center' border='1'>" +
                     "<th>Sorsz.</th><th>Student név (id)</th><th>Kurzus név (id)</th><th>Jegy</th><!--th>Jegybeírás</th--><th>Töröl</th>";
          for(int i=0; i<courseRegistrationService.getAllCourseRegistration().size(); i++) {
