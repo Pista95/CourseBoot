@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -21,10 +23,10 @@ public class Profile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int pofile_id;
 
-    //@NotBlank
+    @NotBlank
     private String name=randN();
 
-    //@Min(18)
+    @Min(18)
     private int age=18;
     @OneToOne
     @MapsId
