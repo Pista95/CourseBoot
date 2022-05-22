@@ -6,12 +6,7 @@ function loadpages(){
 function generateRandomInteger(min, max) {
     return Math.floor(min + Math.random() * (max - min + 1))
 }
-/*
-function resizeIframe(obj) {
-    obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
-    obj.style.width =  obj.contentWindow.document.documentElement.scrollWidth + 'px';
-}
-*/
+
 function sendJSON(){
 
     let param1 = document.querySelector('#email');
@@ -41,7 +36,6 @@ function sendJSON(){
     xhr.send(data);
     // alert("Sent JSON: " +data);
     alert("Tanuló felvéve");
-    //setTimeout(document.getElementById('getallstudent').contentDocument.location.reload(true),400);
 }
 /////////////////////////////////////////////////////////////
 
@@ -81,7 +75,6 @@ function sendCOURSEREG(){
 
     let param1 = document.querySelector('#student_id');
     let param2 = document.querySelector('#course_id');
-    //let param3 = document.querySelector('#power');
     let param3 = generateRandomInteger(3,5);
     // Creating a XHR object
     let xhr = new XMLHttpRequest();
@@ -96,7 +89,6 @@ function sendCOURSEREG(){
     // Create a state change callback
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
-
             // Print received data from server
             //result.innerHTML = this.responseText;
             $("#getallcourseregistrations").load("http://localhost:8090/getAllCourseRegistration");
@@ -108,6 +100,29 @@ function sendCOURSEREG(){
     // Sending data with the request
     xhr.send(data);
     //alert("Sent JSON: " +data);
-     alert("Kurzus tanulóhoz rendelve");
-    //setTimeout(document.getElementById('getallcourseregistrations').contentDocument.location.reload(true),900);
+}
+
+function sendJsonToDeleteCourseReg(id){
+    // Creating a XHR object
+    let xhr = new XMLHttpRequest();
+    let url = "http://localhost:8090/deleteCourseRegistration";
+
+    // open a connection
+    xhr.open("POST", url, true);
+
+    // Set the request header i.e. which type of content you are sending
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    // Create a state change callback
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Print received data from server
+            $("#getallcourseregistrations").load("http://localhost:8090/getAllCourseRegistration");
+        }
+    };
+
+    // Converting JSON data to string
+    let data = JSON.stringify({ "courseregistration_id": id});
+    // Sending data with the request
+    xhr.send(data);
 }
