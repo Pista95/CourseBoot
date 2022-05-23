@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface CourseService {
     void addCourse(Course course);
-    void deleteCourse(Course course);
+    void deleteCourse(int course);
     //void deleteCourseById(int course_id);
     List<Course> getAllCourse();
 }

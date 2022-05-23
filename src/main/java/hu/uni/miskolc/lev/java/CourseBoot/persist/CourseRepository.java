@@ -6,7 +6,4 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface CourseRepository extends CrudRepository<Course, Integer> {
-    @Query("select c from Course c where c.course_id = ?1")
-    CourseRepository findAllByCourse_id(int id);
-}
+public interface CourseRepository extends CrudRepository<Course, Integer> { }

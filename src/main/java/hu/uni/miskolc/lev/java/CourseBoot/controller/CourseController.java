@@ -4,10 +4,7 @@ import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.Course;
 import hu.uni.miskolc.lev.java.CourseBoot.service.CourseService;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class CourseController {
@@ -25,9 +22,9 @@ public class CourseController {
 
     @PostMapping("deleteCourse")
     @ResponseBody
-    public void deleteCourseById(@RequestBody Course course){
-        courseService.deleteCourse(course);
-        System.out.println(course.toString());
+    public void deleteCourseById(@RequestParam int id){
+        courseService.deleteCourse(id);
+        //System.out.println(course.toString());
     }
 
     @GetMapping(value = "/getAllCourse", produces = MediaType.TEXT_HTML_VALUE)

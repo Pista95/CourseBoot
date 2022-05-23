@@ -168,7 +168,7 @@ function sendJsonToDeleteStudent(id){
 function sendJsonToDeleteCourse(id){
     // Creating a XHR object
     let xhr = new XMLHttpRequest();
-    let url = "http://localhost:8090/deleteCourse";
+    let url = "http://localhost:8090/deleteCourse?id="+id+"";
 
     // open a connection
     xhr.open("POST", url, true);
@@ -187,5 +187,5 @@ function sendJsonToDeleteCourse(id){
     // Converting JSON data to string
     //let data = JSON.stringify({ "course_id": pid, "param":param2});
     // Sending data with the request
-    xhr.send(id);
+    xhr.send();
 }
