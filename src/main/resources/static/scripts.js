@@ -9,6 +9,11 @@ function generateRandomInteger(min, max) {
     return Math.floor(min + Math.random() * (max - min + 1))
 }
 
+function update(courseregid,power){
+   //
+}
+
+
 function sendJSON(){
 
     let param1 = document.querySelector('#email');
@@ -37,9 +42,10 @@ function sendJSON(){
     // Sending data with the request
     xhr.send(data);
     // alert("Sent JSON: " +data);
-    alert("Tanuló felvéve");
+    //alert("Tanuló felvéve");
+
 }
-/////////////////////////////////////////////////////////////
+
 
 function addCOURSE(){
 
@@ -67,7 +73,7 @@ function addCOURSE(){
     let data = JSON.stringify({ "name": param1.value });
     // Sending data with the request
     xhr.send(data);
-    alert("Kurzus felvehető");
+     // alert("Kurzus felvehető");
     //setTimeout( document.getElementById('getallcourse').contentDocument.location.reload(true),900);
 }
 
@@ -127,4 +133,64 @@ function sendJsonToDeleteCourseReg(id){
     let data = JSON.stringify({ "courseregistration_id": id});
     // Sending data with the request
     xhr.send(data);
+}
+
+
+///////////////////////////////////////////////////////////
+function sendJsonToDeleteStudent(id){
+    alert(id);
+    // Creating a XHR object
+    let xhr = new XMLHttpRequest();
+    let url = "http://localhost:8090/deleteStudent";
+
+    // open a connection
+    xhr.open("POST", url, true);
+
+    // Set the request header i.e. which type of content you are sending
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    // Create a state change callback
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Print received data from server
+            $("#getallstudent").load("http://localhost:8090/getAllStudent");
+        }
+    };
+
+    // Converting JSON data to string
+    let data = JSON.stringify({ "student_id": id});
+    // Sending data with the request
+    xhr.send(data);
+
+}
+
+
+function sendJsonToDeleteCourse(id,p2){
+    var pid=id;
+    var param2=p2;
+    alert(pid+" "+p2);
+    // Creating a XHR object
+    let xhr = new XMLHttpRequest();
+    let url = "http://localhost:8090/deleteCourse";
+
+    // open a connection
+    xhr.open("POST", url, true);
+
+    // Set the request header i.e. which type of content you are sending
+    xhr.setRequestHeader("Content-Type", "application/json");
+
+    // Create a state change callback
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Print received data from server
+            $("#getallcourse").load("http://localhost:8090/getAllCourse");
+        }
+    };
+
+    // Converting JSON data to string
+    let data = JSON.stringify({ "course_id": pid, "param":param2});
+    // Sending data with the request
+    xhr.send(data);
+
+
 }

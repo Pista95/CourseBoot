@@ -20,21 +20,15 @@ public class CourseController {
     @ResponseBody
     public void addCourse(@RequestBody Course course){
         courseService.addCourse(course);
+        System.out.println(course.toString());
     }
 
     @PostMapping("deleteCourse")
     @ResponseBody
     public void deleteCourseById(@RequestBody Course course){
         courseService.deleteCourse(course);
+        System.out.println(course.toString());
     }
-
-    @PostMapping("deleteCourseById")
-    @ResponseBody
-    public void deleteCourseById(@RequestBody int course_id){
-        courseService.deleteCourseById(course_id);
-    }
-
-    //összes kurzus listázása //
 
     @GetMapping(value = "/getAllCourse", produces = MediaType.TEXT_HTML_VALUE)
     @ResponseBody
@@ -51,21 +45,10 @@ public class CourseController {
             for(int i=0; i<courseService.getAllCourse().size(); i++) {
                 result += "<tr><td>"+courseService.getAllCourse().get(i).getCourse_id()+"</td>" +
                         "<td><input value='"+courseService.getAllCourse().get(i).getName()+"'></td>" +
-                      "<td><button id='"+courseService.getAllCourse().get(i).getCourse_id()+"'>Törlés</button></td>";
+                      "<td><button onclick='sendJsonToDeleteCourse(this.id,9)' id='"+courseService.getAllCourse().get(i).getCourse_id()+"'>Törlés</button></td>";
             }
             result+="<tr><table></body></html>";
         }
         return result;
     }
-
-
-
-
-
-
-
-
-
-
-
 }

@@ -3,12 +3,10 @@ package hu.uni.miskolc.lev.java.CourseBoot.controller;
 import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.CourseRegistration;
 import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.CourseRegistrationDTO;
 import hu.uni.miskolc.lev.java.CourseBoot.service.CourseRegistrationService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class CourseRegistrationController {
@@ -23,6 +21,19 @@ public class CourseRegistrationController {
     public void addCourseRegistration(@RequestBody CourseRegistrationDTO courseregistrationdto){
         courseRegistrationService.addCourseRegistration(courseregistrationdto);
     }
+    @PostMapping("updateCourseRegistration")
+    @ResponseBody
+    public void updateCourseRegistration(@RequestBody CourseRegistrationDTO courseregistrationdto){
+        courseRegistrationService.updateCourseRegistration(courseregistrationdto);
+    }
+    @PostMapping("update")
+    @ResponseBody
+    public void update(@RequestBody String p){
+       // return p;
+    }
+
+
+
     @PostMapping("deleteCourseRegistration")
     @ResponseBody
     public void deleteCourseRegistration(@RequestBody CourseRegistration courseRegistration){
@@ -48,10 +59,15 @@ public class CourseRegistrationController {
                         "(" +courseRegistrationService.getAllCourseRegistration().get(i).getStudent().getStudent_id()+")</td>" +
                         "<td>"+courseRegistrationService.getAllCourseRegistration().get(i).getCourse().getName() +
                         "("+courseRegistrationService.getAllCourseRegistration().get(i).getCourse().getCourse_id()+")</td>" +
-                        "<td>"+courseRegistrationService.getAllCourseRegistration().get(i).getPower()+"</td>"+
+                        "<td><input id='inp"+courseRegistrationService.getAllCourseRegistration().get(i).getCourseregistration_id()+"\'" +
+                        "value='"+courseRegistrationService.getAllCourseRegistration().get(i).getPower()+"'/>" +
+                        //"<button onclick=\"update(this.id, document.getElementById('inp"+courseRegistrationService.getAllCourseRegistration().get(i).getCourseregistration_id()+"').value)\" id='"+courseRegistrationService.getAllCourseRegistration().get(i).getCourseregistration_id()+"'>Update</button></td>"+
+                        "<a target='p' href='http://localhost:8090/update?id=1&power=4'>Update</a>"+
                         "<td><button onclick='sendJsonToDeleteCourseReg(this.id)' id='"+courseRegistrationService.getAllCourseRegistration().get(i).getCourseregistration_id()+"'>Töröl</button></td>";
             }
-            result+="<tr><table></body></html>";
+            result+="<tr><table>" +
+                    "<iframe id='p' name='p'></iframe>" +
+                    "</body></html>";
         }
         return result;
     }

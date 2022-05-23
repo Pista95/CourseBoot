@@ -32,11 +32,6 @@ public class CourseServiceImpl implements CourseService{
     public void deleteCourse(Course course) {
         courseRepository.delete(course);
     }
-    @Override
-    public void deleteCourseById(int course_id) {
-        // TODO Auto-generated method stub
-        courseRepository.deleteById(course_id);
-    }
 
     @Override
     public List<Course> getAllCourse() {

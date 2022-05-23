@@ -1,5 +1,6 @@
 package hu.uni.miskolc.lev.java.CourseBoot.controller;
 
+import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.Course;
 import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.Student;
 import hu.uni.miskolc.lev.java.CourseBoot.service.ProfileService;
 import hu.uni.miskolc.lev.java.CourseBoot.service.StudentService;
@@ -26,6 +27,14 @@ public class StudentController {
     @ResponseBody
     public void addStudent(@RequestBody Student student) {
         studentService.addStudent(student);
+       // return student;
+    }
+
+    @PostMapping("deleteStudent")
+    @ResponseBody
+    public void deleteStudent(@RequestBody Student student){
+        studentService.deleteStudent(student);
+        System.out.println("deleteStudent:"+student.toString());
     }
 
     @GetMapping("getAllStudentJson")
@@ -48,7 +57,8 @@ public class StudentController {
              for(int i=0; i<studentService.getAllStudent().size(); i++) {
                  result += "<tr><td>"+ studentService.getAllStudent().get(i).getStudent_id()+"</td>" +
                          "<td><input value='"+ profileService.getAllProfile().get(i).getName()+"'></td>"+
-                         "<td><input value='"+ studentService.getAllStudent().get(i).getEmail()+"'></td>";
+                         "<td><input value='"+ studentService.getAllStudent().get(i).getEmail()+"'></td>"+
+                         "<td><button onclick='sendJsonToDeleteStudent(this.id)' id='"+ studentService.getAllStudent().get(i).getStudent_id()+"'>Törlés</button></td>";
              }
              result+="<tr><table></body></html>";
         }
