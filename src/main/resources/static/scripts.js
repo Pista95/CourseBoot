@@ -165,10 +165,7 @@ function sendJsonToDeleteStudent(id){
 }
 
 
-function sendJsonToDeleteCourse(id,p2){
-    var pid=id;
-    var param2=p2;
-    alert(pid+" "+p2);
+function sendJsonToDeleteCourse(id){
     // Creating a XHR object
     let xhr = new XMLHttpRequest();
     let url = "http://localhost:8090/deleteCourse";
@@ -177,7 +174,7 @@ function sendJsonToDeleteCourse(id,p2){
     xhr.open("POST", url, true);
 
     // Set the request header i.e. which type of content you are sending
-    xhr.setRequestHeader("Content-Type", "application/json");
+   // xhr.setRequestHeader("Content-Type", "application/json");
 
     // Create a state change callback
     xhr.onreadystatechange = function () {
@@ -188,9 +185,7 @@ function sendJsonToDeleteCourse(id,p2){
     };
 
     // Converting JSON data to string
-    let data = JSON.stringify({ "course_id": pid, "param":param2});
+    //let data = JSON.stringify({ "course_id": pid, "param":param2});
     // Sending data with the request
-    xhr.send(data);
-
-
+    xhr.send(id);
 }

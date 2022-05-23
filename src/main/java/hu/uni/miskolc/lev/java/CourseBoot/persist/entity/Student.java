@@ -24,10 +24,10 @@ public class Student {
     private int student_id;
 
     @NotBlank
-    private String email="email";
+    private String email;
 
     @NotBlank
-    private String password="password";
+    private String password;
 
     @OneToMany(mappedBy = "student" , cascade = CascadeType.ALL)
     Set<CourseRegistration> courseregistration;
