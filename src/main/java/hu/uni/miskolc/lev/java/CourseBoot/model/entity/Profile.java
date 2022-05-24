@@ -24,17 +24,17 @@ public class Profile {
     private int profile_id;
 
     @NotBlank
-    private String name=randN();
+    private String name=randomName();
 
     @Min(18)
-    private int age=18;
+    private int age=(int)(Math.random()*100);
 
     @OneToOne
     @MapsId
     @JoinColumn(name = "profile_id")
     private Student student;
 
-    public String randN() {
+    public String randomName() {
         Random rand = new Random();
         List<String> givenList = Arrays.asList("Péter", "István", "János", "Ádám","Ferenc","Miklós");
         int numberOfElements = 6;
