@@ -131,7 +131,6 @@ function deleteCourseReg(id){
 
 ///////////////////////////////////////////////////////////
 function deleteStudent(student_id){
-    alert(student_id);
     // Creating a XHR object
     let xhr = new XMLHttpRequest();
     let url = "http://localhost:8090/deleteStudent?student_id="+student_id+"";

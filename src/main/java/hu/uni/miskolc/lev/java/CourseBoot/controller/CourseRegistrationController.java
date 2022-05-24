@@ -62,7 +62,7 @@ public class CourseRegistrationController {
                         "<td><input id='inp"+courseRegistrationService.getAllCourseRegistration().get(i).getCourseregistration_id()+"\'" +
                         "value='"+courseRegistrationService.getAllCourseRegistration().get(i).getPower()+"'/>" +
                         //"<button onclick=\"update(this.id, document.getElementById('inp"+courseRegistrationService.getAllCourseRegistration().get(i).getCourseregistration_id()+"').value)\" id='"+courseRegistrationService.getAllCourseRegistration().get(i).getCourseregistration_id()+"'>Update</button></td>"+
-                        "<td><button onclick='updateCourseReg(this.id)' id='"+courseRegistrationService.getAllCourseRegistration().get(i).getCourseregistration_id()+"'>Módosít</button></td>"+
+                        "<td><button onclick='updateCourseReg(this.id, , \"1\")' id='"+courseRegistrationService.getAllCourseRegistration().get(i).getCourseregistration_id()+"'>Módosít</button></td>"+
                         "<td><button onclick='deleteCourseReg(this.id)' id='"+courseRegistrationService.getAllCourseRegistration().get(i).getCourseregistration_id()+"'>Töröl</button></td>";
             }
             result+="<tr><table>";

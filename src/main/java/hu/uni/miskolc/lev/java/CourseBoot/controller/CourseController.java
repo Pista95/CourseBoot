@@ -25,11 +25,7 @@ public class CourseController {
     @PostMapping("deleteCourse")
     @ResponseBody
     public void deleteCourseById(@RequestParam int course_id){
-        try {
             courseService.deleteCourse(course_id);
-        } catch (Exception e) {
-            System.out.println("Something went wrong.");
-        }
     }
 
     //Kurzus frissítés
