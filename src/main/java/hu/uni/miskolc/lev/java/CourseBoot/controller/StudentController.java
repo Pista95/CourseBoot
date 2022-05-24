@@ -55,11 +55,12 @@ public class StudentController {
         } else {
              result= "<html><header><title>getAllstudent</title></header><body>";
              result+="Student/Prfile (rekordok száma: " + studentService.getAllStudent().size()+")<br><table style='width:98%' align='center' border='1'>" +
-                     "<th>Tanuló id</th><th>Tanuló név (profile táblából)</th><th>E-mail</th><th colspan='2'>Művelet</th>";
+                     "<th>Tanuló</th><!--th>Tanuló név (id) (profile táblából)</th--><th>E-mail</th><th>Jelszó</th><th colspan='2'>Művelet</th>";
              for(int i=0; i<studentService.getAllStudent().size(); i++) {
-                 result += "<tr><td>"+ studentService.getAllStudent().get(i).getStudent_id()+"</td>" +
-                         "<td><input value='"+ profileService.getAllProfile().get(i).getName()+"'></td>"+
+                 result += "<tr><td>"+profileService.getAllProfile().get(i).getName()+" (id:"+ studentService.getAllStudent().get(i).getStudent_id()+")</td>" +
+                         "<!--td><input value='"+profileService.getAllProfile().get(i).getName()+"'></td-->"+
                          "<td><input value='"+ studentService.getAllStudent().get(i).getEmail()+"'></td>"+
+                         "<td><input type='password' value='"+ studentService.getAllStudent().get(i).getPassword()+"'></td>"+
                          "<td><button onclick='updateStudent(this.id,\"1\",\"2\")' id='"+ studentService.getAllStudent().get(i).getStudent_id()+"'>Módosít</button></td>"+
                          "<td><button onclick='deleteStudent(this.id)' id='"+ studentService.getAllStudent().get(i).getStudent_id()+"'>Törlés</button></td>";
              }

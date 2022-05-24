@@ -26,8 +26,8 @@ public class Profile {
     @NotBlank
     private String name=randomName();
 
-    @Min(18)
-    private int age=(int)(Math.random()*100);
+   // @Min(18)
+    private int age=18;
 
     @OneToOne
     @MapsId
