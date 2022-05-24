@@ -50,7 +50,7 @@ public class CourseController {
                 result += "<tr><td>"+courseService.getAllCourse().get(i).getCourse_id()+"</td>" +
                         "<td><input value='"+courseService.getAllCourse().get(i).getName()+"'></td>" +
                         "<td><button onclick='updateCourse(this.id)' id='"+courseService.getAllCourse().get(i).getCourse_id()+"'>Módosít</button></td>"+
-                        "<td><button onclick='sendJsonToDeleteCourse(this.id,9)' id='"+courseService.getAllCourse().get(i).getCourse_id()+"'>Törlés</button></td>";
+                        "<td><button onclick='deleteCourse(this.id)' id='"+courseService.getAllCourse().get(i).getCourse_id()+"'>Törlés</button></td>";
             }
             result+="<tr><table></body></html>";
         }
