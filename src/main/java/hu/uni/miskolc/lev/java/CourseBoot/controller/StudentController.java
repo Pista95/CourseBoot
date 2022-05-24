@@ -6,10 +6,7 @@ import hu.uni.miskolc.lev.java.CourseBoot.service.ProfileService;
 import hu.uni.miskolc.lev.java.CourseBoot.service.StudentService;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,9 +29,8 @@ public class StudentController {
 
     @PostMapping("deleteStudent")
     @ResponseBody
-    public void deleteStudent(@RequestBody Student student){
-        studentService.deleteStudent(student);
-        System.out.println("deleteStudent:"+student.toString());
+    public void deleteStudent(@RequestBody int student_id){
+        studentService.deleteStudent(student_id);
     }
 
     @GetMapping("getAllStudentJson")
@@ -52,12 +48,13 @@ public class StudentController {
                     "</body>\n" + "</html>";
         } else {
              result= "<html><header><title>getAllstudent</title></header><body>";
-             result+="Student/Prfile (rekordok száma: " + studentService.getAllStudent().size()+")<br><table align='center' border='1'>" +
-                     "<th>Student id</th><th>Student név (profile táblából)</th><th>E-mail</th><!--th>Törlés</th-->";
+             result+="Student/Prfile (rekordok száma: " + studentService.getAllStudent().size()+")<br><table style='width:98%' align='center' border='1'>" +
+                     "<th>Tanuló id</th><th>Tanuló név (profile táblából)</th><th>E-mail</th><th colspan='2'>Művelet</th>";
              for(int i=0; i<studentService.getAllStudent().size(); i++) {
                  result += "<tr><td>"+ studentService.getAllStudent().get(i).getStudent_id()+"</td>" +
                          "<td><input value='"+ profileService.getAllProfile().get(i).getName()+"'></td>"+
                          "<td><input value='"+ studentService.getAllStudent().get(i).getEmail()+"'></td>"+
+                         "<td><button onclick='updateStudent(this.id)' id='"+ studentService.getAllStudent().get(i).getStudent_id()+"'>Módosít</button></td>"+
                          "<td><button onclick='sendJsonToDeleteStudent(this.id)' id='"+ studentService.getAllStudent().get(i).getStudent_id()+"'>Törlés</button></td>";
              }
              result+="<tr><table></body></html>";

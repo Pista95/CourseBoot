@@ -19,8 +19,11 @@ public class CourseRegistrationDTO {
     private long courseregistration_id;
 
     private int student_id=1;
+
     private int course_id=1;
-    LocalDateTime registeredAt= LocalDateTime.now();
+
+    private LocalDateTime registeredAt= LocalDateTime.now();
+
     @Min(0)
     @Max(5)
     private int power=randomPower();
@@ -30,5 +33,4 @@ public class CourseRegistrationDTO {
         Random rand = new Random();
         return givenList.get(rand.nextInt(givenList.size()));
     }
-
 }

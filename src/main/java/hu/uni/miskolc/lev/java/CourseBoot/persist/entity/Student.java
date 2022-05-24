@@ -1,6 +1,5 @@
 package hu.uni.miskolc.lev.java.CourseBoot.persist.entity;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,10 +23,10 @@ public class Student {
     private int student_id;
 
     @NotBlank
-    private String email;
+    private String email="proba@email.hu";
 
     @NotBlank
-    private String password;
+    private String password="jelszo";
 
     @OneToMany(mappedBy = "student" , cascade = CascadeType.ALL)
     Set<CourseRegistration> courseregistration;
@@ -36,4 +35,3 @@ public class Student {
     @PrimaryKeyJoinColumn
     private Profile profile;
 }
-

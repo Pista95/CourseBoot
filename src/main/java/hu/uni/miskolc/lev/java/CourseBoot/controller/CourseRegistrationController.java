@@ -65,9 +65,7 @@ public class CourseRegistrationController {
                         "<a target='p' href='http://localhost:8090/update?id=1&power=4'>Update</a>"+
                         "<td><button onclick='sendJsonToDeleteCourseReg(this.id)' id='"+courseRegistrationService.getAllCourseRegistration().get(i).getCourseregistration_id()+"'>Töröl</button></td>";
             }
-            result+="<tr><table>" +
-                    "<iframe id='p' name='p'></iframe>" +
-                    "</body></html>";
+            result+="<tr><table>";
         }
         return result;
     }

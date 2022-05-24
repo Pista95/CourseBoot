@@ -2,18 +2,24 @@ package hu.uni.miskolc.lev.java.CourseBoot.service;
 
 import hu.uni.miskolc.lev.java.CourseBoot.persist.StudentRepository;
 import hu.uni.miskolc.lev.java.CourseBoot.persist.ProfileRepository;
-import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.Course;
 import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.Profile;
 import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.Student;
+import org.hibernate.exception.ConstraintViolationException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class StudentServiceImpl implements StudentService{
+    private static final Logger logger = LoggerFactory.getLogger(CourseServiceImpl.class);
+
     private final ProfileRepository profileRepository;
     private final StudentRepository studentRepository;
+
     @Autowired
     public StudentServiceImpl(StudentRepository studentRepository, ProfileRepository profileRepository) {
         this.studentRepository = studentRepository;
@@ -27,15 +33,33 @@ public class StudentServiceImpl implements StudentService{
         Profile profile = new Profile();
         profile.setStudent(student);
         profileRepository.save(profile);
-        System.out.println(lastStudent(student));
+        System.out.println(lastAddedStudent(student));
     }
 
-    public void deleteStudent(Student student) {
-        studentRepository.delete(student);
+    @Override
+    public void updateStudent(int course_id) {
+        //
     }
 
+    @Override
+    public void deleteStudent(int student_id) {
+        try {
+            studentRepository.deleteById(student_id);
+        } catch (DataIntegrityViolationException e) {
+            logger.error("Could not remove course.");
+            final Throwable cause = e.getCause();
+            if (null != cause && cause instanceof ConstraintViolationException) {
+                final ConstraintViolationException cve = (ConstraintViolationException) cause;
+                logger.error("Violated constraint: {}", cve.getConstraintName());
+            }
+            // TODO: throw application exception and handle it by sending http 500
+        }
+    }
+    public List<Student> getAllStudent() {
+        return (List<Student>) studentRepository.findAll();
+    }
 
-    public String lastStudent(Student student){
+    public String lastAddedStudent(Student student){
         int last_id=getAllStudent().size()-1;
         return "============== Felvett Tanuló ==============\n" +
                 "Tanuló id:"+
@@ -43,21 +67,5 @@ public class StudentServiceImpl implements StudentService{
                 "\ne-mail:"+
                 getAllStudent().get(last_id).getEmail()+
                 "\njelszó:***********\n"+student.toString()+"\n";
-    }
-
-    public void tanulokListazasa(){
-        System.out.println("============== Összes Tanuló ==============");
-        for (int i =0; i < getAllStudent().size(); i++) {
-            System.out.println(
-                    "Tanuló id: "+getAllStudent().get(i).getStudent_id()
-                            +"\nE-mail: "+getAllStudent().get(i).getEmail()
-                            +"\nJelszó: "+getAllStudent().get(i).getPassword()+"\n"
-            );
-        }
-    }
-
-    public List<Student> getAllStudent() {
-
-        return (List<Student>) studentRepository.findAll();
     }
 }

@@ -20,28 +20,17 @@ public class CourseServiceImpl implements CourseService{
     public CourseServiceImpl(CourseRepository courseRepository) {
         this.courseRepository = courseRepository;
     }
+
     @Override
     public void addCourse(Course course) {
         courseRepository.save(course);
-        System.out.println(lastCourse());
+        System.out.println(lastAddedCourse());
     }
-    public String lastCourse(){
-        int last_id=getAllCourse().size()-1;
-        return "============== Új kurzus ==============\n" +
-                "Kurzus id:"+
-                getAllCourse().get(last_id).getCourse_id()+
-                "\nKurzus név:"+
-                getAllCourse().get(last_id).getName();
-    }
-
-
 
     @Override
-    public List<Course> getAllCourse() {
-        return (List<Course>) courseRepository.findAll();
+    public void updateCourse(int course_id) {
+        //
     }
-
-
 
     @Override
     public void deleteCourse(int course) {
@@ -58,5 +47,17 @@ public class CourseServiceImpl implements CourseService{
         }
     }
 
+    @Override
+    public List<Course> getAllCourse() {
+        return (List<Course>) courseRepository.findAll();
+    }
 
+    public String lastAddedCourse(){
+        int last_id=getAllCourse().size()-1;
+        return "============== Új kurzus ==============\n" +
+                "Kurzus id:"+
+                getAllCourse().get(last_id).getCourse_id()+
+                "\nKurzus név:"+
+                getAllCourse().get(last_id).getName();
+    }
 }

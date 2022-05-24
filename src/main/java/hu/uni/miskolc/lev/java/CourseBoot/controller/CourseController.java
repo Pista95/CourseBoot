@@ -19,14 +19,21 @@ public class CourseController {
         courseService.addCourse(course);
         System.out.println(course.toString());
     }
-
+    //Kurzus törlés
     @PostMapping("deleteCourse")
     @ResponseBody
     public void deleteCourseById(@RequestParam int id){
         courseService.deleteCourse(id);
-        //System.out.println(course.toString());
     }
 
+    //Kurzus frissítés
+    @PostMapping("updateCourse")
+    @ResponseBody
+    public void updateCourseById(@RequestParam int id){
+        courseService.updateCourse(id);
+    }
+
+    //Kurzus lekérdezés
     @GetMapping(value = "/getAllCourse", produces = MediaType.TEXT_HTML_VALUE)
     @ResponseBody
     public String StudentAsHTML() {
@@ -37,12 +44,13 @@ public class CourseController {
                     "</body>\n" + "</html>";
         } else {
             result= "<html><header><title>getAllCourse</title></header><body>";
-            result+="Course ( rekordok száma: " + courseService.getAllCourse().size()+")<br><table align='center' border='1'>" +
-                    "<th>Course id</th><th>Course név</th><th>Törlés</th>";
+            result+="Course (rekordok száma: " + courseService.getAllCourse().size()+")<br><table style='width:98%' align='center' border='1'>" +
+                    "<th>Kurzus id</th><th>Kurzus név</th><th colspan='2'>Művelet</th>";
             for(int i=0; i<courseService.getAllCourse().size(); i++) {
                 result += "<tr><td>"+courseService.getAllCourse().get(i).getCourse_id()+"</td>" +
                         "<td><input value='"+courseService.getAllCourse().get(i).getName()+"'></td>" +
-                      "<td><button onclick='sendJsonToDeleteCourse(this.id,9)' id='"+courseService.getAllCourse().get(i).getCourse_id()+"'>Törlés</button></td>";
+                        "<td><button onclick='updateCourse(this.id)' id='"+courseService.getAllCourse().get(i).getCourse_id()+"'>Módosít</button></td>"+
+                        "<td><button onclick='sendJsonToDeleteCourse(this.id,9)' id='"+courseService.getAllCourse().get(i).getCourse_id()+"'>Törlés</button></td>";
             }
             result+="<tr><table></body></html>";
         }

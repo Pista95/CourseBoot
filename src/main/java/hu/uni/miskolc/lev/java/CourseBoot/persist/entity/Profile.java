@@ -28,6 +28,7 @@ public class Profile {
 
     @Min(18)
     private int age=18;
+
     @OneToOne
     @MapsId
     @JoinColumn(name = "pofile_id")

@@ -21,13 +21,17 @@ public class CourseRegistration {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int courseregistration_id;
+
     @ManyToOne
     @JoinColumn(name = "student_id")
     private Student student;
+
     @ManyToOne
     @JoinColumn(name = "course_id")
     private Course course;
-    LocalDateTime registeredAt;
+
+    private LocalDateTime registeredAt;
+
     @Min(0)
     @Max(5)
     private int power;

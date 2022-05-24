@@ -18,8 +18,10 @@ public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int course_id;
+
     @NotBlank
-    private String name="info";
+    private String name="IT kurzus";
+
     @OneToMany(mappedBy = "course")
      Set<CourseRegistration> courseregistration;
 }

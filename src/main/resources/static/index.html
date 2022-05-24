@@ -3,45 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>
-        Sending JSON data to server
+        JSON küldése a szervernek
     </title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="scripts.js"></script>
     <style>
         div{
             border: solid green 1px;
-            margin: 5px;
+            padding: 5px;
+            margin: 1px;
         }
     </style>
 </head>
 <body style="text-align:center" id="body" onload="loadpages()">
 <h3 style="color: green">Spring Boot alkalmazás</h3>
-    <div id="description" style="text-align: justify; padding: 10px"></div>
-    <div style="float:left; width: 45%; background-color: aqua" id="getallstudent"></div>
-    <div style="float:right; width: 45%; background-color: aqua" id="getallcourse"></div>
-    <div style="float:left; width: 99%">
-    <div style="float:left; width: 45%">
-        <h4 style="color:green;">Add student</h4>
-        E-mail:<input type="email" id="email" name="email" placeholder="E-mail" value="proba@email.hu">
-        Jelszó:<input type="password" id="password" name="password" placeholder="Password" value="jelszo">
-        <button onclick="sendJSON()">Add Student</button>
+<div id="description" style="text-align: justify; padding: 10px"></div>
+
+    <div style="float:left; width: 48%">
+        <div style="float:left; width: 98%; background-color: aqua" id="getallstudent"></div>
+        <div style="float:left; width: 98%">
+            <h5 style="color:green;">Tanuló felvétel</h5>
+            E-mail:<input type="email" id="email" name="email" placeholder="E-mail" value="proba@email.hu">
+            Jelszó:<input type="password" id="password" name="password" placeholder="Password" value="jelszo">
+            <button onclick="sendJSON()">Felvesz</button>
+        </div>
     </div>
-    <div style="float:right; width: 45%">
-        <h4 style="color:green">Add course</h4>
-        Kurzus név:<input type="text" id="coursename" name="coursename" placeholder="Course name" value="IT kurzus">
-        <button onclick="addCOURSE()">Add course</button>
+
+
+    <div style="float:right; width: 48%">
+        <div style="float:right; width: 98%; background-color: aqua" id="getallcourse"></div>
+        <div style="float:right; width: 98%">
+            <h5 style="color:green">Kurzus felvétel</h5>
+            Kurzus név:<input type="text" id="coursename" name="coursename" placeholder="Course name" value="IT kurzus">
+            <button onclick="addCOURSE()">Felvesz</button>
+        </div>
     </div>
-    </div>
+
     <div style="float:left; width: 99%">
         <!--Add CourseRegistration-->
-        <h4 style="color:green;">Kurzus tanulóhoz rendelése</h4>
+        <h5 style="color:green;">Kurzus tanulóhoz rendelése</h5>
         Tanuló id:<input type="number" id="student_id" name="student_id" placeholder="student id" value="1">
         Kurzus id:<input type="number" id="course_id" name="course_id" placeholder="course id" value="1">
         <input type="hidden" id="power" name="power" placeholder="jegy" value="0" readonly>
-        <button onclick="sendCOURSEREG()">Add Course to the Student</button>
+        <button onclick="sendCOURSEREG()">Összekapcsolás</button>
+        <div style="float:left; width: 99%; margin-top: 11px; background-color: aqua" id="getallcourseregistrations"></div>
     </div>
-    <div style="float:left; width: 100%; background-color: aqua" id="getallcourseregistrations"></div>
-    <div style="float:left; width: 100%; background-color: aqua" id="update"></div>
-
 </body>
 </html>
