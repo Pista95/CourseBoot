@@ -1,4 +1,4 @@
-package hu.uni.miskolc.lev.java.CourseBoot.persist.entity;
+package hu.uni.miskolc.lev.java.CourseBoot.model.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -30,11 +30,7 @@ public class Student {
 
     @OneToMany(mappedBy = "student")
     Set<CourseRegistration> courseregistration;
-/*
-    @OneToOne(mappedBy = "student")
-    @PrimaryKeyJoinColumn
-    private Profile profile;
-*/
+
     @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private Profile profile;

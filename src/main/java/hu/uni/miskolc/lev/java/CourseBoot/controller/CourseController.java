@@ -1,12 +1,10 @@
 package hu.uni.miskolc.lev.java.CourseBoot.controller;
 
-import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.Course;
+import hu.uni.miskolc.lev.java.CourseBoot.model.entity.Course;
 import hu.uni.miskolc.lev.java.CourseBoot.service.CourseService;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.awt.*;
 
 @Controller
 public class CourseController {

@@ -1,10 +1,10 @@
 package hu.uni.miskolc.lev.java.CourseBoot.service;
 
-import hu.uni.miskolc.lev.java.CourseBoot.persist.CourseRegistrationRepository;
-import hu.uni.miskolc.lev.java.CourseBoot.persist.CourseRepository;
-import hu.uni.miskolc.lev.java.CourseBoot.persist.StudentRepository;
-import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.CourseRegistration;
-import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.CourseRegistrationDTO;
+import hu.uni.miskolc.lev.java.CourseBoot.model.repo.CourseRegistrationRepository;
+import hu.uni.miskolc.lev.java.CourseBoot.model.repo.CourseRepository;
+import hu.uni.miskolc.lev.java.CourseBoot.model.repo.StudentRepository;
+import hu.uni.miskolc.lev.java.CourseBoot.model.entity.CourseRegistration;
+import hu.uni.miskolc.lev.java.CourseBoot.model.entity.CourseRegistrationDTO;
 import org.hibernate.exception.ConstraintViolationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

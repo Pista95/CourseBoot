@@ -1,7 +1,7 @@
 package hu.uni.miskolc.lev.java.CourseBoot.service;
 
-import hu.uni.miskolc.lev.java.CourseBoot.persist.CourseRepository;
-import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.Course;
+import hu.uni.miskolc.lev.java.CourseBoot.model.repo.CourseRepository;
+import hu.uni.miskolc.lev.java.CourseBoot.model.entity.Course;
 import org.hibernate.exception.ConstraintViolationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

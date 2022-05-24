@@ -1,7 +1,6 @@
 package hu.uni.miskolc.lev.java.CourseBoot.controller;
 
-import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.Course;
-import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.Student;
+import hu.uni.miskolc.lev.java.CourseBoot.model.entity.Student;
 import hu.uni.miskolc.lev.java.CourseBoot.service.ProfileService;
 import hu.uni.miskolc.lev.java.CourseBoot.service.StudentService;
 import org.springframework.http.MediaType;

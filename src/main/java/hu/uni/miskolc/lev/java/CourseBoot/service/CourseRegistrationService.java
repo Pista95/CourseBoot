@@ -1,7 +1,7 @@
 package hu.uni.miskolc.lev.java.CourseBoot.service;
 
-import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.CourseRegistration;
-import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.CourseRegistrationDTO;
+import hu.uni.miskolc.lev.java.CourseBoot.model.entity.CourseRegistration;
+import hu.uni.miskolc.lev.java.CourseBoot.model.entity.CourseRegistrationDTO;
 
 import java.util.List;
 

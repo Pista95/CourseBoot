@@ -1,9 +1,7 @@
 package hu.uni.miskolc.lev.java.CourseBoot.controller;
 
-import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.CourseRegistration;
-import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.CourseRegistrationDTO;
+import hu.uni.miskolc.lev.java.CourseBoot.model.entity.CourseRegistrationDTO;
 import hu.uni.miskolc.lev.java.CourseBoot.service.CourseRegistrationService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;

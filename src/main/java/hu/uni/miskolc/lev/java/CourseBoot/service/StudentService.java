@@ -1,6 +1,6 @@
 package hu.uni.miskolc.lev.java.CourseBoot.service;
 
-import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.Student;
+import hu.uni.miskolc.lev.java.CourseBoot.model.entity.Student;
 
 import java.util.List;
 

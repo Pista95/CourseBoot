@@ -1,4 +1,4 @@
-package hu.uni.miskolc.lev.java.CourseBoot.persist.entity;
+package hu.uni.miskolc.lev.java.CourseBoot.model.entity;
 
 import lombok.*;
 
