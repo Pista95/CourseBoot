@@ -2,6 +2,7 @@ package hu.uni.miskolc.lev.java.CourseBoot.service;
 
 import hu.uni.miskolc.lev.java.CourseBoot.persist.StudentRepository;
 import hu.uni.miskolc.lev.java.CourseBoot.persist.ProfileRepository;
+import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.Course;
 import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.Profile;
 import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.Student;
 import org.hibernate.exception.ConstraintViolationException;
@@ -12,6 +13,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StudentServiceImpl implements StudentService{
@@ -39,6 +41,13 @@ public class StudentServiceImpl implements StudentService{
     @Override
     public void updateStudent(int student_id, String email, String password) {
         System.out.println("StudentServiceImp update student: "+student_id+" "+email+" "+password);
+        Optional<Student> student = studentRepository.findById(student_id);
+        if (student.isPresent()) {
+            Student s =student.get();
+            s.setEmail(email);
+            s.setPassword("Jelszó");
+            studentRepository.save(s);
+        }
     }
 
     @Override

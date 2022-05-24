@@ -31,7 +31,7 @@ public class CourseController {
     //Kurzus frissítés
     @PostMapping("updateCourse")
     @ResponseBody
-    public void updateCourseById(@RequestParam int course_id, String name){
+    public void updateCourseById(@RequestParam int course_id, @RequestParam String name){
         courseService.updateCourse(course_id, name);
     }
 

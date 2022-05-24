@@ -28,7 +28,7 @@ public class StudentController {
 
     @PostMapping("updateStudent")
     @ResponseBody
-    public void updateStudentById(@RequestParam int student_id, String email, String password){
+    public void updateStudentById(@RequestParam int student_id, @RequestParam String email, @RequestParam String password){
         studentService.updateStudent(student_id, email, password);
     }
 
@@ -61,7 +61,7 @@ public class StudentController {
                  result += "<tr><td>"+ studentService.getAllStudent().get(i).getStudent_id()+"</td>" +
                          "<td><input value='"+ profileService.getAllProfile().get(i).getName()+"'></td>"+
                          "<td><input value='"+ studentService.getAllStudent().get(i).getEmail()+"'></td>"+
-                         "<td><button onclick='updateStudent(this.id,1,2)' id='"+ studentService.getAllStudent().get(i).getStudent_id()+"'>Módosít</button></td>"+
+                         "<td><button onclick='updateStudent(this.id,\"1\",\"2\")' id='"+ studentService.getAllStudent().get(i).getStudent_id()+"'>Módosít</button></td>"+
                          "<td><button onclick='deleteStudent(this.id)' id='"+ studentService.getAllStudent().get(i).getStudent_id()+"'>Törlés</button></td>";
              }
              result+="<tr><table></body></html>";

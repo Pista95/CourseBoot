@@ -28,10 +28,14 @@ public class Student {
     @NotBlank
     private String password="jelszo";
 
-    @OneToMany(mappedBy = "student" , cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "student")
     Set<CourseRegistration> courseregistration;
-
+/*
     @OneToOne(mappedBy = "student")
+    @PrimaryKeyJoinColumn
+    private Profile profile;
+*/
+    @OneToOne(mappedBy = "student", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private Profile profile;
 }

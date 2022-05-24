@@ -1,16 +1,15 @@
 package hu.uni.miskolc.lev.java.CourseBoot.persist.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
@@ -23,10 +22,12 @@ public class CourseRegistration {
     private int courseregistration_id;
 
     @ManyToOne
+    @NotNull
     @JoinColumn(name = "student_id")
     private Student student;
 
     @ManyToOne
+    @NotNull
     @JoinColumn(name = "course_id")
     private Course course;
 

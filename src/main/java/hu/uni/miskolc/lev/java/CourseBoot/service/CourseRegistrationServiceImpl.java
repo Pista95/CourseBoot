@@ -57,7 +57,7 @@ public class CourseRegistrationServiceImpl implements CourseRegistrationService 
     @Override
     public void deleteCourseRegistration (int course_id) {
         try {
-            courseRepository.deleteById(course_id);
+             courseRegistrationRepository.deleteById(course_id);
         } catch (DataIntegrityViolationException e) {
             logger.error("Could not remove course.");
             final Throwable cause = e.getCause();

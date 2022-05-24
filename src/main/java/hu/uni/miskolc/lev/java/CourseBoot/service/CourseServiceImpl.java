@@ -31,7 +31,19 @@ public class CourseServiceImpl implements CourseService{
     @Override
     public void updateCourse(int course_id, String name) {
         System.out.println("CourseServiceImpl update course: "+course_id+" course n.:"+name);
-        //
+        Optional<Course> course = courseRepository.findById(course_id);
+        if (course.isPresent()) {
+            Course c = course.get();
+            c.setName(name);
+            courseRepository.save(c);
+        }
+      /*
+        course.ifPresent(c -> {
+            c.setName(name);
+            courseRepository.save(c);
+        });
+
+       */
     }
 
     @Override

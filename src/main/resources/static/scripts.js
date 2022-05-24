@@ -111,7 +111,7 @@ function sendCOURSEREG(){
 }
 
 function deleteCourseReg(id){
-    alert(id);
+    //alert(id);
     // Creating a XHR object
     let xhr = new XMLHttpRequest();
     let url = "http://localhost:8090/deleteCourseRegistration?id="+id+"";
@@ -183,11 +183,11 @@ function updateCourse(course_id, name){
     xhr.send();
 }
 
-function updateStudent(student_id, name, password){
+function updateStudent(student_id, email, password){
     //alert(course_id+" "+name);
     // Creating a XHR object
     let xhr = new XMLHttpRequest();
-    let url = "http://localhost:8090/updateStudent?student_id="+student_id+"&name="+name+"&password"+password+"";
+    let url = "http://localhost:8090/updateStudent?student_id="+student_id+"&email="+email+"&password="+password+"";
 
     xhr.open("POST", url, true);
 

@@ -21,7 +21,7 @@ import java.util.Random;
 public class Profile {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int pofile_id;
+    private int profile_id;
 
     @NotBlank
     private String name=randN();
@@ -31,7 +31,7 @@ public class Profile {
 
     @OneToOne
     @MapsId
-    @JoinColumn(name = "pofile_id")
+    @JoinColumn(name = "profile_id")
     private Student student;
 
     public String randN() {
