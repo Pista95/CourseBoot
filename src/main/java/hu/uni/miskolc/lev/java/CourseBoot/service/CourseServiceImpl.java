@@ -10,6 +10,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CourseServiceImpl implements CourseService{
@@ -28,7 +29,8 @@ public class CourseServiceImpl implements CourseService{
     }
 
     @Override
-    public void updateCourse(int course_id) {
+    public void updateCourse(int course_id, String name) {
+        System.out.println("CourseServiceImpl update course: "+course_id+" course n.:"+name);
         //
     }
 
@@ -60,4 +62,6 @@ public class CourseServiceImpl implements CourseService{
                 "\nKurzus név:"+
                 getAllCourse().get(last_id).getName();
     }
+
+
 }

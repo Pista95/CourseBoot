@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface StudentService {
     void addStudent(Student student);
-    void updateStudent(int course_id);
+    void updateStudent(int student_id, String email, String password);
 
     void deleteStudent(int student_id);
 

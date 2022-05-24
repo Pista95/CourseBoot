@@ -37,13 +37,14 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
-    public void updateStudent(int course_id) {
-        //
+    public void updateStudent(int student_id, String email, String password) {
+        System.out.println("StudentServiceImp update student: "+student_id+" "+email+" "+password);
     }
 
     @Override
     public void deleteStudent(int student_id) {
         try {
+            System.out.println("StudentServiceImpl: delete student "+student_id);
             studentRepository.deleteById(student_id);
         } catch (DataIntegrityViolationException e) {
             logger.error("Could not remove course.");

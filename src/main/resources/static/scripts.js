@@ -130,11 +130,11 @@ function deleteCourseReg(id){
 
 
 ///////////////////////////////////////////////////////////
-function deleteStudent(id){
-    alert(id);
+function deleteStudent(student_id){
+    alert(student_id);
     // Creating a XHR object
     let xhr = new XMLHttpRequest();
-    let url = "http://localhost:8090/deleteStudent?student_id="+id+"";
+    let url = "http://localhost:8090/deleteStudent?student_id="+student_id+"";
 
     xhr.open("POST", url, true);
 
@@ -142,7 +142,6 @@ function deleteStudent(id){
         if (xhr.readyState === 4 && xhr.status === 200) {
             // Print received data from server
             $("#getallstudent").load("http://localhost:8090/getAllStudent");
-            alert("Okay");
         }
     };
 
@@ -165,5 +164,40 @@ function deleteCourse(id){
     };
 
     xhr.send();
-    alert("Okay");
+}
+
+function updateCourse(course_id, name){
+    //alert(course_id+" "+name);
+    // Creating a XHR object
+    let xhr = new XMLHttpRequest();
+    let url = "http://localhost:8090/updateCourse?course_id="+course_id+"&name="+name+"";
+
+    xhr.open("POST", url, true);
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Print received data from server
+            $("#getallCourse").load("http://localhost:8090/getAllCourse");
+        }
+    };
+
+    xhr.send();
+}
+
+function updateStudent(student_id, name, password){
+    //alert(course_id+" "+name);
+    // Creating a XHR object
+    let xhr = new XMLHttpRequest();
+    let url = "http://localhost:8090/updateStudent?student_id="+student_id+"&name="+name+"&password"+password+"";
+
+    xhr.open("POST", url, true);
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            // Print received data from server
+            $("#getallstudent").load("http://localhost:8090/getAllStudent");
+        }
+    };
+
+    xhr.send();
 }

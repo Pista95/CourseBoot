@@ -6,6 +6,8 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.*;
+
 @Controller
 public class CourseController {
     private final CourseService courseService;
@@ -33,8 +35,8 @@ public class CourseController {
     //Kurzus frissítés
     @PostMapping("updateCourse")
     @ResponseBody
-    public void updateCourseById(@RequestParam int id){
-        courseService.updateCourse(id);
+    public void updateCourseById(@RequestParam int course_id, String name){
+        courseService.updateCourse(course_id, name);
     }
 
     //Kurzus lekérdezés
@@ -52,8 +54,8 @@ public class CourseController {
                     "<th>Kurzus id</th><th>Kurzus név</th><th colspan='2'>Művelet</th>";
             for(int i=0; i<courseService.getAllCourse().size(); i++) {
                 result += "<tr><td>"+courseService.getAllCourse().get(i).getCourse_id()+"</td>" +
-                        "<td><input value='"+courseService.getAllCourse().get(i).getName()+"'></td>" +
-                        "<td><button onclick='updateCourse(this.id)' id='"+courseService.getAllCourse().get(i).getCourse_id()+"'>Módosít</button></td>"+
+                        "<td><input id='course"+courseService.getAllCourse().get(i).getCourse_id()+"' value='"+courseService.getAllCourse().get(i).getName()+"'></td>" +
+                        "<td><button onclick='updateCourse(this.id, 9)' id='"+courseService.getAllCourse().get(i).getCourse_id()+"'>Módosít</button></td>"+
                         "<td><button onclick='deleteCourse(this.id)' id='"+courseService.getAllCourse().get(i).getCourse_id()+"'>Törlés</button></td>";
             }
             result+="<tr><table></body></html>";
