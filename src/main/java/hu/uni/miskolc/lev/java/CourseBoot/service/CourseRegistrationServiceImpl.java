@@ -5,12 +5,17 @@ import hu.uni.miskolc.lev.java.CourseBoot.persist.CourseRepository;
 import hu.uni.miskolc.lev.java.CourseBoot.persist.StudentRepository;
 import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.CourseRegistration;
 import hu.uni.miskolc.lev.java.CourseBoot.persist.entity.CourseRegistrationDTO;
+import org.hibernate.exception.ConstraintViolationException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service
 public class CourseRegistrationServiceImpl implements CourseRegistrationService {
+    private static final Logger logger = LoggerFactory.getLogger(CourseRegistrationServiceImpl.class);
     private final CourseRegistrationRepository courseRegistrationRepository;
     private final CourseRepository courseRepository;
     private final StudentRepository studentRepository;
@@ -44,8 +49,24 @@ public class CourseRegistrationServiceImpl implements CourseRegistrationService 
         //
     }
 
+    /*
     public void deleteCourseRegistration(CourseRegistration courseRegistration){
         courseRegistrationRepository.delete(courseRegistration);
+    }
+     */
+    @Override
+    public void deleteCourseRegistration (int course_id) {
+        try {
+            courseRepository.deleteById(course_id);
+        } catch (DataIntegrityViolationException e) {
+            logger.error("Could not remove course.");
+            final Throwable cause = e.getCause();
+            if (null != cause && cause instanceof ConstraintViolationException) {
+                final ConstraintViolationException cve = (ConstraintViolationException) cause;
+                logger.error("Violated constraint: {}", cve.getConstraintName());
+            }
+            // TODO: throw application exception and handle it by sending http 500
+        }
     }
 
     @Override

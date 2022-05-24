@@ -29,8 +29,9 @@ public class StudentController {
 
     @PostMapping("deleteStudent")
     @ResponseBody
-    public void deleteStudent(@RequestBody int student_id){
+    public int deleteStudent(@RequestParam int student_id){
         studentService.deleteStudent(student_id);
+        return student_id;
     }
 
     @GetMapping("getAllStudentJson")
@@ -55,7 +56,7 @@ public class StudentController {
                          "<td><input value='"+ profileService.getAllProfile().get(i).getName()+"'></td>"+
                          "<td><input value='"+ studentService.getAllStudent().get(i).getEmail()+"'></td>"+
                          "<td><button onclick='updateStudent(this.id)' id='"+ studentService.getAllStudent().get(i).getStudent_id()+"'>Módosít</button></td>"+
-                         "<td><button onclick='sendJsonToDeleteStudent(this.id)' id='"+ studentService.getAllStudent().get(i).getStudent_id()+"'>Törlés</button></td>";
+                         "<td><button onclick='deleteStudent(this.id)' id='"+ studentService.getAllStudent().get(i).getStudent_id()+"'>Törlés</button></td>";
              }
              result+="<tr><table></body></html>";
         }

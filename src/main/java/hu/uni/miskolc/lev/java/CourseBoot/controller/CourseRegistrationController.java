@@ -36,8 +36,8 @@ public class CourseRegistrationController {
 
     @PostMapping("deleteCourseRegistration")
     @ResponseBody
-    public void deleteCourseRegistration(@RequestBody CourseRegistration courseRegistration){
-       courseRegistrationService.deleteCourseRegistration(courseRegistration);
+    public void deleteCourseRegistration(@RequestParam int id){
+       courseRegistrationService.deleteCourseRegistration(id);
     }
 
     @GetMapping(value = "/getAllCourseRegistration", produces = MediaType.TEXT_HTML_VALUE)
@@ -52,7 +52,7 @@ public class CourseRegistrationController {
         } else {
             result= "<html><header><title>getAllCourseAndStudents</title></header><body>";
             result+="Kurzus fevétel, kapcsoló tábla (rekordok száma: " +courseRegistrationService.getAllCourseRegistration().size()+")<table align='center' border='1'>" +
-                    "<th>Sorsz.</th><th>Student név (id)</th><th>Kurzus név (id)</th><th>Jegy</th><!--th>Jegybeírás</th--><th>Töröl</th>";
+                    "<th>Sorsz.</th><th>Student név (id)</th><th>Kurzus név (id)</th><th>Jegy</th><th colspan='2'>Művelet</th>";
          for(int i=0; i<courseRegistrationService.getAllCourseRegistration().size(); i++) {
                 result += "<tr><td>"+courseRegistrationService.getAllCourseRegistration().get(i).getCourseregistration_id()+"</td>" +
                         "<td>"+courseRegistrationService.getAllCourseRegistration().get(i).getStudent().getProfile().getName() +
@@ -62,8 +62,8 @@ public class CourseRegistrationController {
                         "<td><input id='inp"+courseRegistrationService.getAllCourseRegistration().get(i).getCourseregistration_id()+"\'" +
                         "value='"+courseRegistrationService.getAllCourseRegistration().get(i).getPower()+"'/>" +
                         //"<button onclick=\"update(this.id, document.getElementById('inp"+courseRegistrationService.getAllCourseRegistration().get(i).getCourseregistration_id()+"').value)\" id='"+courseRegistrationService.getAllCourseRegistration().get(i).getCourseregistration_id()+"'>Update</button></td>"+
-                        "<a target='p' href='http://localhost:8090/update?id=1&power=4'>Update</a>"+
-                        "<td><button onclick='sendJsonToDeleteCourseReg(this.id)' id='"+courseRegistrationService.getAllCourseRegistration().get(i).getCourseregistration_id()+"'>Töröl</button></td>";
+                        "<td><button onclick='updateCourseReg(this.id)' id='"+courseRegistrationService.getAllCourseRegistration().get(i).getCourseregistration_id()+"'>Módosít</button></td>"+
+                        "<td><button onclick='deleteCourseReg(this.id)' id='"+courseRegistrationService.getAllCourseRegistration().get(i).getCourseregistration_id()+"'>Töröl</button></td>";
             }
             result+="<tr><table>";
         }

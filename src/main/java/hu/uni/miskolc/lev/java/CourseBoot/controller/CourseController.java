@@ -22,8 +22,12 @@ public class CourseController {
     //Kurzus törlés
     @PostMapping("deleteCourse")
     @ResponseBody
-    public void deleteCourseById(@RequestParam int id){
-        courseService.deleteCourse(id);
+    public void deleteCourseById(@RequestParam int course_id){
+        try {
+            courseService.deleteCourse(course_id);
+        } catch (Exception e) {
+            System.out.println("Something went wrong.");
+        }
     }
 
     //Kurzus frissítés

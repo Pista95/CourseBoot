@@ -110,18 +110,14 @@ function sendCOURSEREG(){
     //alert("Sent JSON: " +data);
 }
 
-function sendJsonToDeleteCourseReg(id){
+function deleteCourseReg(id){
+    alert(id);
     // Creating a XHR object
     let xhr = new XMLHttpRequest();
-    let url = "http://localhost:8090/deleteCourseRegistration";
+    let url = "http://localhost:8090/deleteCourseRegistration?id="+id+"";
 
-    // open a connection
     xhr.open("POST", url, true);
 
-    // Set the request header i.e. which type of content you are sending
-    xhr.setRequestHeader("Content-Type", "application/json");
-
-    // Create a state change callback
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             // Print received data from server
@@ -129,46 +125,35 @@ function sendJsonToDeleteCourseReg(id){
         }
     };
 
-    // Converting JSON data to string
-    let data = JSON.stringify({ "courseregistration_id": id});
-    // Sending data with the request
-    xhr.send(data);
+    xhr.send();
 }
 
 
 ///////////////////////////////////////////////////////////
-function sendJsonToDeleteStudent(id){
+function deleteStudent(id){
     alert(id);
     // Creating a XHR object
     let xhr = new XMLHttpRequest();
-    let url = "http://localhost:8090/deleteStudent";
+    let url = "http://localhost:8090/deleteStudent?student_id="+id+"";
 
-    // open a connection
     xhr.open("POST", url, true);
 
-    // Set the request header i.e. which type of content you are sending
-    xhr.setRequestHeader("Content-Type", "application/json");
-
-    // Create a state change callback
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             // Print received data from server
             $("#getallstudent").load("http://localhost:8090/getAllStudent");
+            alert("Okay");
         }
     };
 
-    // Converting JSON data to string
-    let data = JSON.stringify({ "student_id": id});
-    // Sending data with the request
-    xhr.send(data);
-
+    xhr.send();
 }
 
 
 function deleteCourse(id){
     // Creating a XHR object
     let xhr = new XMLHttpRequest();
-    let url = "http://localhost:8090/deleteCourse?id="+id+"";
+    let url = "http://localhost:8090/deleteCourse?course_id="+id+"";
 
     xhr.open("POST", url, true);
 
@@ -180,4 +165,5 @@ function deleteCourse(id){
     };
 
     xhr.send();
+    alert("Okay");
 }

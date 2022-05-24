@@ -28,7 +28,7 @@ public class Student {
     @NotBlank
     private String password="jelszo";
 
-    @OneToMany(mappedBy = "student" , cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "student" , cascade = CascadeType.REMOVE)
     Set<CourseRegistration> courseregistration;
 
     @OneToOne(mappedBy = "student")
