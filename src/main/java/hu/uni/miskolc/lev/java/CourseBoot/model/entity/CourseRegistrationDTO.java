@@ -17,9 +17,9 @@ public class CourseRegistrationDTO {
 
     private long courseregistration_id;
 
-    private int student_id=1;
+    private int student_id;
 
-    private int course_id=1;
+    private int course_id;
 
     private LocalDateTime registeredAt= LocalDateTime.now();
 

@@ -4,7 +4,6 @@ import hu.uni.miskolc.lev.java.CourseBoot.model.repo.StudentRepository;
 import hu.uni.miskolc.lev.java.CourseBoot.model.repo.ProfileRepository;
 import hu.uni.miskolc.lev.java.CourseBoot.model.entity.Profile;
 import hu.uni.miskolc.lev.java.CourseBoot.model.entity.Student;
-import org.hibernate.exception.ConstraintViolationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,31 +38,26 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public void updateStudent(int student_id, String email, String password) {
-        System.out.println("StudentServiceImp update student: "+student_id+" "+email+" "+password);
         Optional<Student> student = studentRepository.findById(student_id);
         if (student.isPresent()) {
             Student s =student.get();
             s.setEmail(email);
             s.setPassword(password);
             studentRepository.save(s);
+            System.out.println("\nStudentServiceImp update student: "+student_id+" "+email+" "+password);
         }
     }
 
     @Override
     public void deleteStudent(int student_id) {
         try {
-            System.out.println("StudentServiceImpl: delete student "+student_id);
             studentRepository.deleteById(student_id);
+            System.out.println("student_id:"+student_id+ " deleted");
         } catch (DataIntegrityViolationException e) {
-            logger.error("Could not remove course.");
-            final Throwable cause = e.getCause();
-            if (null != cause && cause instanceof ConstraintViolationException) {
-                final ConstraintViolationException cve = (ConstraintViolationException) cause;
-                logger.error("Violated constraint: {}", cve.getConstraintName());
+            logger.error("Could not remove student.");
             }
-            // TODO: throw application exception and handle it by sending http 500
-        }
     }
+
     public List<Student> getAllStudent() {
         return (List<Student>) studentRepository.findAll();
     }

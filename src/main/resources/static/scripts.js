@@ -198,11 +198,11 @@ function updateCourse(course_id){
 
 ////////////////////////////
 
-function updateCourseReg(coursereg_id){
-    var power=document.getElementById('coursereg'+coursereg_id).value;
+function updateCourseReg(courseregistration_id){
+    var power=document.getElementById('coursereg'+courseregistration_id).value;
     // Creating a XHR object
     let xhr = new XMLHttpRequest();
-    let url = "http://localhost:8090/updateCourseRegistration?courseregistration_id="+coursereg_id+"&power="+power+"";
+    let url = "http://localhost:8090/updateCourseRegistration?courseregistration_id="+courseregistration_id+"&power="+power+"";
 
     xhr.open("POST", url, true);
 

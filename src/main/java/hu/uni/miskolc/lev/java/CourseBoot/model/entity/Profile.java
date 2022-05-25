@@ -1,9 +1,6 @@
 package hu.uni.miskolc.lev.java.CourseBoot.model.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
@@ -12,7 +9,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
@@ -26,7 +24,7 @@ public class Profile {
     @NotBlank
     private String name=randomName();
 
-   // @Min(18)
+    @Min(18)
     private int age=18;
 
     @OneToOne

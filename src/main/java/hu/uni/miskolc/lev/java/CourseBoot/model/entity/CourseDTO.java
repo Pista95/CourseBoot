@@ -1,12 +1,11 @@
 package hu.uni.miskolc.lev.java.CourseBoot.model.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 public class CourseDTO {
 
     private int course_id;

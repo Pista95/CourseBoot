@@ -2,7 +2,6 @@ package hu.uni.miskolc.lev.java.CourseBoot.service;
 
 import hu.uni.miskolc.lev.java.CourseBoot.model.repo.CourseRepository;
 import hu.uni.miskolc.lev.java.CourseBoot.model.entity.Course;
-import org.hibernate.exception.ConstraintViolationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,28 +35,17 @@ public class CourseServiceImpl implements CourseService{
             Course c = course.get();
             c.setName(name);
             courseRepository.save(c);
+            System.out.println("course_id:"+course_id+" updated");
         }
-      /*
-        course.ifPresent(c -> {
-            c.setName(name);
-            courseRepository.save(c);
-        });
-
-       */
     }
 
     @Override
     public void deleteCourse(int course_id) {
         try {
             courseRepository.deleteById(course_id);
+            System.out.println("course_id:"+course_id+" deleted");
         } catch (DataIntegrityViolationException e) {
             logger.error("Could not remove course.");
-            final Throwable cause = e.getCause();
-            if (null != cause && cause instanceof ConstraintViolationException) {
-                final ConstraintViolationException cve = (ConstraintViolationException) cause;
-                logger.error("Violated constraint: {}", cve.getConstraintName());
-            }
-            // TODO: throw application exception and handle it by sending http 500
         }
     }
 
@@ -69,10 +57,7 @@ public class CourseServiceImpl implements CourseService{
     public String lastAddedCourse(){
         int last_id=getAllCourse().size()-1;
         return "============== Új kurzus ==============\n" +
-                "Kurzus id:"+
-                getAllCourse().get(last_id).getCourse_id()+
-                "\nKurzus név:"+
-                getAllCourse().get(last_id).getName();
+                "Kurzus id:"+ getAllCourse().get(last_id).getCourse_id()+
+                "\nKurzus név:"+getAllCourse().get(last_id).getName();
     }
-
 }

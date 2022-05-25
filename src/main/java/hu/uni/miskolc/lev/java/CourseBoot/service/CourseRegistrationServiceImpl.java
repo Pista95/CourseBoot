@@ -5,7 +5,6 @@ import hu.uni.miskolc.lev.java.CourseBoot.model.repo.CourseRepository;
 import hu.uni.miskolc.lev.java.CourseBoot.model.repo.StudentRepository;
 import hu.uni.miskolc.lev.java.CourseBoot.model.entity.CourseRegistration;
 import hu.uni.miskolc.lev.java.CourseBoot.model.entity.CourseRegistrationDTO;
-import org.hibernate.exception.ConstraintViolationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,25 +32,28 @@ public class CourseRegistrationServiceImpl implements CourseRegistrationService 
     }
     @Override
     public void addCourseRegistration(CourseRegistrationDTO courseregistrationDTO) {
+        try{
         CourseRegistration courseregistration= new CourseRegistration();
         courseregistration.setPower(courseregistrationDTO.getPower());
         courseregistration.setRegisteredAt(courseregistrationDTO.getRegisteredAt());
         if(courseRepository.findById(courseregistrationDTO.getCourse_id()).isPresent()) {
             courseregistration.setCourse(courseRepository.findById(courseregistrationDTO.getCourse_id()).get());
-        }
-        if(studentRepository.findById(courseregistrationDTO.getStudent_id()).isPresent()) {
             courseregistration.setStudent(studentRepository.findById(courseregistrationDTO.getStudent_id()).get());
         }
         courseRegistrationRepository.save(courseregistration);
         System.out.println(lastAddedCourseReg());
+        } catch (Exception e) {
+            logger.error("Could not add coursereg.");
+        }
     }
 
     @Override
-    public void updateCourseRegistration(int coursereg_id, int power){
-        Optional<CourseRegistration> coursereg = courseRegistrationRepository.findById(coursereg_id);
+    public void updateCourseRegistration(int courseregistration_id, int power){
+        Optional<CourseRegistration> coursereg = courseRegistrationRepository.findById(courseregistration_id);
          coursereg.ifPresent(c -> {
             c.setPower(power);
             courseRegistrationRepository.save(c);
+             System.out.println("coursereg_id:"+courseregistration_id+" updated");
         });
     }
 
@@ -59,14 +61,9 @@ public class CourseRegistrationServiceImpl implements CourseRegistrationService 
     public void deleteCourseRegistration (int coursereg_id) {
         try {
              courseRegistrationRepository.deleteById(coursereg_id);
+             System.out.println("coursereg_id:"+coursereg_id+" deleted");
         } catch (DataIntegrityViolationException e) {
-            logger.error("Could not remove course.");
-            final Throwable cause = e.getCause();
-            if (null != cause && cause instanceof ConstraintViolationException) {
-                final ConstraintViolationException cve = (ConstraintViolationException) cause;
-                logger.error("Violated constraint: {}", cve.getConstraintName());
-            }
-            // TODO: throw application exception and handle it by sending http 500
+            logger.error("Could not delete coursereg.");
         }
     }
 
@@ -77,7 +74,7 @@ public class CourseRegistrationServiceImpl implements CourseRegistrationService 
 
     public String lastAddedCourseReg(){
         int last_id=getAllCourseRegistration().size()-1;
-        return "============== Tárgyfelvétel ==============\n" +
+        return "\n============== Tárgyfelvétel ==============\n" +
                 getAllCourseRegistration().get(last_id).getStudent().getProfile().getName()+ " felvette " +
                 "a(z) "+getAllCourseRegistration().get(last_id).getCourse().getName() + "kurzust\n" +
                 "és az alábbi osztályzatot kapta: "+ getAllCourseRegistration().get(last_id).getPower();

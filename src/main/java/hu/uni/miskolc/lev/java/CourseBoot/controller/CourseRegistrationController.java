@@ -17,25 +17,25 @@ public class CourseRegistrationController {
     @PostMapping("addCourseRegistration")
     @ResponseBody
     public void addCourseRegistration(@RequestBody CourseRegistrationDTO courseregistrationdto){
-        courseRegistrationService.addCourseRegistration(courseregistrationdto);
+            courseRegistrationService.addCourseRegistration(courseregistrationdto);
     }
 
     @PostMapping("updateCourseRegistration")
     @ResponseBody
     public void updateCourseRegistration (@RequestParam int courseregistration_id, @RequestParam int power){
-        courseRegistrationService.updateCourseRegistration(courseregistration_id, power);
-            System.out.println("CourseregCont: "+courseregistration_id+" "+power);
+            courseRegistrationService.updateCourseRegistration(courseregistration_id, power);
     }
 
     @PostMapping("deleteCourseRegistration")
     @ResponseBody
     public void deleteCourseRegistration(@RequestParam int coursereg_id){
-       courseRegistrationService.deleteCourseRegistration(coursereg_id);
+           courseRegistrationService.deleteCourseRegistration(coursereg_id);
     }
 
     @GetMapping(value = "/getAllCourseRegistration", produces = MediaType.TEXT_HTML_VALUE)
     @ResponseBody
     public String CourseRegAsHTML() {
+        try{
         String result;
         if (courseRegistrationService.getAllCourseRegistration().size() == 0) {
             result= "<html>\n" + "<header><title>getAllCourseAndStudents</title></header>\n" +
@@ -60,5 +60,8 @@ public class CourseRegistrationController {
             result+="<tr><table>";
         }
         return result;
+    } catch (Exception e) {
+            return "Runtime error.";
+        }
     }
 }

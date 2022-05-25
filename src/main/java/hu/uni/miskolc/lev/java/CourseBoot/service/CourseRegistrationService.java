@@ -9,7 +9,7 @@ public interface CourseRegistrationService {
 
     void addCourseRegistration(CourseRegistrationDTO courseregistrationDTO);
 
-    void updateCourseRegistration(int coursereg_id, int power);
+    void updateCourseRegistration(int courseregistration_id, int power);
 
     void deleteCourseRegistration(int coursereg_id);
 
