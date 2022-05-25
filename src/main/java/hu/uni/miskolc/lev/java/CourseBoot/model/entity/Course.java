@@ -20,7 +20,7 @@ public class Course {
     private int course_id;
 
     @NotBlank
-    private String name;
+    private String name="IT kurzus";
 
     @OneToMany(mappedBy = "course")
      Set<CourseRegistration> courseregistration;

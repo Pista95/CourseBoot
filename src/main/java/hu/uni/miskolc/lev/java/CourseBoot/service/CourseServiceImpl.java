@@ -47,9 +47,9 @@ public class CourseServiceImpl implements CourseService{
     }
 
     @Override
-    public void deleteCourse(int id) {
+    public void deleteCourse(int course_id) {
         try {
-            courseRepository.deleteById(id);
+            courseRepository.deleteById(course_id);
         } catch (DataIntegrityViolationException e) {
             logger.error("Could not remove course.");
             final Throwable cause = e.getCause();
@@ -74,6 +74,5 @@ public class CourseServiceImpl implements CourseService{
                 "\nKurzus név:"+
                 getAllCourse().get(last_id).getName();
     }
-
 
 }

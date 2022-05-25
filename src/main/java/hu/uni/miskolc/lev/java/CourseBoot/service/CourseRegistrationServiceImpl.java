@@ -45,19 +45,12 @@ public class CourseRegistrationServiceImpl implements CourseRegistrationService 
     }
 
     @Override
-    public void updateCourseRegistration(CourseRegistrationDTO courseregistrationDTO) {
-        //
-    }
+    public void updateCourseRegistration(CourseRegistrationDTO courseregistrationDTO) {}
 
-    /*
-    public void deleteCourseRegistration(CourseRegistration courseRegistration){
-        courseRegistrationRepository.delete(courseRegistration);
-    }
-     */
     @Override
-    public void deleteCourseRegistration (int course_id) {
+    public void deleteCourseRegistration (int coursereg_id) {
         try {
-             courseRegistrationRepository.deleteById(course_id);
+             courseRegistrationRepository.deleteById(coursereg_id);
         } catch (DataIntegrityViolationException e) {
             logger.error("Could not remove course.");
             final Throwable cause = e.getCause();

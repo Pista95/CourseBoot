@@ -19,5 +19,4 @@ public class ProfileServiceImpl implements ProfileService{
     public List<Profile> getAllProfile() {
         return (List<Profile>) profileRepository.findAll();
     }
-
 }

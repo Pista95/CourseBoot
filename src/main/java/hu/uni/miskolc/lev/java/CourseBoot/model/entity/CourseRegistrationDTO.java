@@ -1,8 +1,6 @@
 package hu.uni.miskolc.lev.java.CourseBoot.model.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -11,7 +9,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class CourseRegistrationDTO {

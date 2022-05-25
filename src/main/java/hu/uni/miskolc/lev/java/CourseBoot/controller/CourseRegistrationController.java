@@ -19,23 +19,23 @@ public class CourseRegistrationController {
     public void addCourseRegistration(@RequestBody CourseRegistrationDTO courseregistrationdto){
         courseRegistrationService.addCourseRegistration(courseregistrationdto);
     }
-    @PostMapping("updateCourseRegistration")
+    /*
+    @PostMapping("updateCourseReg")
     @ResponseBody
     public void updateCourseRegistration(@RequestBody CourseRegistrationDTO courseregistrationdto){
         courseRegistrationService.updateCourseRegistration(courseregistrationdto);
     }
-    @PostMapping("update")
+    */
+    @PostMapping("updateCourseRegistration")
     @ResponseBody
-    public void update(@RequestBody String p){
-       // return p;
+    public void updateCourseReg (@RequestParam int coursereg_id){
+        //courseRegistrationService.updateCourseRegistration(coursereg_id);
     }
-
-
 
     @PostMapping("deleteCourseRegistration")
     @ResponseBody
-    public void deleteCourseRegistration(@RequestParam int id){
-       courseRegistrationService.deleteCourseRegistration(id);
+    public void deleteCourseRegistration(@RequestParam int coursereg_id){
+       courseRegistrationService.deleteCourseRegistration(coursereg_id);
     }
 
     @GetMapping(value = "/getAllCourseRegistration", produces = MediaType.TEXT_HTML_VALUE)
@@ -57,10 +57,9 @@ public class CourseRegistrationController {
                         "(" +courseRegistrationService.getAllCourseRegistration().get(i).getStudent().getStudent_id()+")</td>" +
                         "<td>"+courseRegistrationService.getAllCourseRegistration().get(i).getCourse().getName() +
                         "("+courseRegistrationService.getAllCourseRegistration().get(i).getCourse().getCourse_id()+")</td>" +
-                        "<td><input id='inp"+courseRegistrationService.getAllCourseRegistration().get(i).getCourseregistration_id()+"\'" +
+                        "<td><input id='coursereg"+courseRegistrationService.getAllCourseRegistration().get(i).getCourseregistration_id()+"'" +
                         "value='"+courseRegistrationService.getAllCourseRegistration().get(i).getPower()+"'/>" +
-                        //"<button onclick=\"update(this.id, document.getElementById('inp"+courseRegistrationService.getAllCourseRegistration().get(i).getCourseregistration_id()+"').value)\" id='"+courseRegistrationService.getAllCourseRegistration().get(i).getCourseregistration_id()+"'>Update</button></td>"+
-                        "<td><button onclick='updateCourseReg(this.id, , \"1\")' id='"+courseRegistrationService.getAllCourseRegistration().get(i).getCourseregistration_id()+"'>Módosít</button></td>"+
+                        "<td><button onclick='updateCourseReg(this.id)' id='"+courseRegistrationService.getAllCourseRegistration().get(i).getCourseregistration_id()+"'>Módosít</button></td>"+
                         "<td><button onclick='deleteCourseReg(this.id)' id='"+courseRegistrationService.getAllCourseRegistration().get(i).getCourseregistration_id()+"'>Töröl</button></td>";
             }
             result+="<tr><table>";

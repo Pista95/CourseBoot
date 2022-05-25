@@ -44,7 +44,7 @@ public class StudentServiceImpl implements StudentService{
         if (student.isPresent()) {
             Student s =student.get();
             s.setEmail(email);
-            s.setPassword("Jelszó");
+            s.setPassword(password);
             studentRepository.save(s);
         }
     }

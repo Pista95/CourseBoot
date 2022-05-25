@@ -26,7 +26,7 @@ public class Student {
     private String email="proba@email.hu";
 
     @NotBlank
-    private String password="jelszo";
+    private String password="password";
 
     @OneToMany(mappedBy = "student")
     Set<CourseRegistration> courseregistration;

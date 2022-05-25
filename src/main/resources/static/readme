@@ -2,7 +2,6 @@ Jelen Spring Boot alkalmazás tanulók, kurzusok és azok nyilvántartására sz
 4 adattáblát használunk: student, profile, course, és courseregistration táblákat.
 Ez utóbbi kapcsolótábla szerepet is betölt a student és a course táblák között.
 Ezen kívül a student és profile táblák között 1-1 kapcsolatot alakítottam ki.
-A post metódusok jsont küldenek a servernek, míg a getkérések html oldalt adnak vissza.
-A táblákba tudunk új rekordot beszúrni, lekérdezni, éa a  courseregistration táblából rekordot törölni.
+A táblákba tudunk új rekordot beszúrni, törölni, adatot módosítani, valamint lekérdezni.
 A beadandóm során törekedtem, hogy összetett lekérdezések is szerepeljen az implementációban.
 A localhost:8090-en elérhető egy egyszerű GUI, így nem szükséges a postman használata.
