@@ -13,6 +13,8 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class CourseRegistrationServiceImpl implements CourseRegistrationService {
     private static final Logger logger = LoggerFactory.getLogger(CourseRegistrationServiceImpl.class);
@@ -45,7 +47,13 @@ public class CourseRegistrationServiceImpl implements CourseRegistrationService 
     }
 
     @Override
-    public void updateCourseRegistration(CourseRegistrationDTO courseregistrationDTO) {}
+    public void updateCourseRegistration(int coursereg_id, int power){
+        Optional<CourseRegistration> coursereg = courseRegistrationRepository.findById(coursereg_id);
+         coursereg.ifPresent(c -> {
+            c.setPower(power);
+            courseRegistrationRepository.save(c);
+        });
+    }
 
     @Override
     public void deleteCourseRegistration (int coursereg_id) {

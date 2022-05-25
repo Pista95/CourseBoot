@@ -19,17 +19,12 @@ public class CourseRegistrationController {
     public void addCourseRegistration(@RequestBody CourseRegistrationDTO courseregistrationdto){
         courseRegistrationService.addCourseRegistration(courseregistrationdto);
     }
-    /*
-    @PostMapping("updateCourseReg")
-    @ResponseBody
-    public void updateCourseRegistration(@RequestBody CourseRegistrationDTO courseregistrationdto){
-        courseRegistrationService.updateCourseRegistration(courseregistrationdto);
-    }
-    */
+
     @PostMapping("updateCourseRegistration")
     @ResponseBody
-    public void updateCourseReg (@RequestParam int coursereg_id){
-        //courseRegistrationService.updateCourseRegistration(coursereg_id);
+    public void updateCourseRegistration (@RequestParam int courseregistration_id, @RequestParam int power){
+        courseRegistrationService.updateCourseRegistration(courseregistration_id, power);
+            System.out.println("CourseregCont: "+courseregistration_id+" "+power);
     }
 
     @PostMapping("deleteCourseRegistration")

@@ -9,8 +9,9 @@ public interface CourseRegistrationService {
 
     void addCourseRegistration(CourseRegistrationDTO courseregistrationDTO);
 
-    void updateCourseRegistration(CourseRegistrationDTO courseregistrationDTO);
+    void updateCourseRegistration(int coursereg_id, int power);
 
-    void deleteCourseRegistration(int id);
+    void deleteCourseRegistration(int coursereg_id);
+
     List<CourseRegistration> getAllCourseRegistration();
 }
