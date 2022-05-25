@@ -1,4 +1,4 @@
-Jelen Spring Boot alkalmazás tanulók, kurzusok és azok nyilvántartására szolgál.
+Jelen Spring Boot alkalmazás tanulók, kurzusok és azok kapcsolatának nyilvántartására szolgál.
 4 adattáblát használunk: student, profile, course, és courseregistration táblákat.
 Ez utóbbi kapcsolótábla szerepet is betölt a student és a course táblák között.
 Ezen kívül a student és profile táblák között 1-1 kapcsolatot alakítottam ki.
