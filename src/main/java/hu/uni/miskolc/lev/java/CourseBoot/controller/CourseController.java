@@ -49,7 +49,7 @@ public class CourseController {
             for(int i=0; i<courseService.getAllCourse().size(); i++) {
                 result += "<tr><td>"+courseService.getAllCourse().get(i).getCourse_id()+"</td>" +
                         "<td><input id='course"+courseService.getAllCourse().get(i).getCourse_id()+"' value='"+courseService.getAllCourse().get(i).getName()+"'></td>" +
-                        "<td><button onclick='updateCourse(this.id, 9)' id='"+courseService.getAllCourse().get(i).getCourse_id()+"'>Módosít</button></td>"+
+                        "<td><button onclick='updateCourse(this.id)' id='"+courseService.getAllCourse().get(i).getCourse_id()+"'>Módosít</button></td>"+
                         "<td><button onclick='deleteCourse(this.id)' id='"+courseService.getAllCourse().get(i).getCourse_id()+"'>Törlés</button></td>";
             }
             result+="<tr><table></body></html>";

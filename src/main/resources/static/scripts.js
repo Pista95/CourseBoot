@@ -9,10 +9,6 @@ function generateRandomInteger(min, max) {
     return Math.floor(min + Math.random() * (max - min + 1))
 }
 
-function update(courseregid,power){
-   //
-}
-
 
 function sendJSON(){
 
@@ -33,7 +29,7 @@ function sendJSON(){
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             // Print received data from server
-            $("#getallstudent").load("http://localhost:8090/getAllStudent");
+            loadpages();
         }
     };
 
@@ -65,8 +61,7 @@ function addCOURSE(){
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             // Print received data from server
-            //result.innerHTML = this.responseText;
-            $("#getallcourse").load("http://localhost:8090/getAllCourse");
+            loadpages();
         }
     };
     // Converting JSON data to string
@@ -98,8 +93,7 @@ function sendCOURSEREG(){
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             // Print received data from server
-            //result.innerHTML = this.responseText;
-            $("#getallcourseregistrations").load("http://localhost:8090/getAllCourseRegistration");
+            loadpages();
         }
     };
 
@@ -121,7 +115,7 @@ function deleteCourseReg(id){
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             // Print received data from server
-            $("#getallcourseregistrations").load("http://localhost:8090/getAllCourseRegistration");
+            loadpages();
         }
     };
 
@@ -140,7 +134,7 @@ function deleteStudent(student_id){
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             // Print received data from server
-            $("#getallstudent").load("http://localhost:8090/getAllStudent");
+            loadpages();
         }
     };
 
@@ -158,15 +152,16 @@ function deleteCourse(id){
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             // Print received data from server
-            $("#getallcourse").load("http://localhost:8090/getAllCourse");
+            loadpages();
         }
     };
 
     xhr.send();
 }
 
-function updateCourse(course_id, name){
-    //alert(course_id+" "+name);
+function updateCourse(course_id){
+    var name=document.getElementById('course'+course_id).value;
+
     // Creating a XHR object
     let xhr = new XMLHttpRequest();
     let url = "http://localhost:8090/updateCourse?course_id="+course_id+"&name="+name+"";
@@ -176,7 +171,7 @@ function updateCourse(course_id, name){
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             // Print received data from server
-            $("#getallCourse").load("http://localhost:8090/getAllCourse");
+            loadpages();
         }
     };
 
@@ -194,7 +189,7 @@ function updateStudent(student_id, email, password){
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             // Print received data from server
-            $("#getallstudent").load("http://localhost:8090/getAllStudent");
+            loadpages();
         }
     };
 
