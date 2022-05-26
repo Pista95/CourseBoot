@@ -53,7 +53,7 @@ public class CourseServiceImpl implements CourseService{
     public List<Course> getAllCourse() {
         return (List<Course>) courseRepository.findAll();
     }
-
+    
     public String lastAddedCourse(){
         int last_id=getAllCourse().size()-1;
         return "============== Új kurzus ==============\n" +

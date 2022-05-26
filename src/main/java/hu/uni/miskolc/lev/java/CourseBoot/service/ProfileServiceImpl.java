@@ -1,5 +1,4 @@
 package hu.uni.miskolc.lev.java.CourseBoot.service;
-import hu.uni.miskolc.lev.java.CourseBoot.model.entity.Student;
 import hu.uni.miskolc.lev.java.CourseBoot.model.repo.ProfileRepository;
 import hu.uni.miskolc.lev.java.CourseBoot.model.entity.Profile;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,10 +36,9 @@ public class ProfileServiceImpl implements ProfileService{
             result="<br>Profil adatok:<table align='center' border='1'>" +
                     "<tr><td>Név:</td><td><input id='name"+profile_id+"' value='"+profile.get().getName()+"'/></td><tr>" +
                     "<tr><td>Kor:</td><td><input id='age"+profile_id+"' type='number' value='"+profile.get().getAge()+"'/></td></tr>" +
-                    "<tr><td colspan='2'><button onclick='updateProfile("+profile_id+")'>Módosít</button></td></tr>" +
-                    "<tr><td>Felvett tárgyak:</td><td></td></tr></table>";
+                    "<tr><td colspan='2'><button onclick='updateProfile("+profile_id+")'>Módosít</button>" +
+                    "<button onclick='loadPages()'>X</button></td></tr>";
         }
         return result;
     }
-
 }

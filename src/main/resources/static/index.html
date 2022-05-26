@@ -25,7 +25,6 @@
         <div style="float:left; width: 98%">
             <h5 style="color:green;">Tanuló felvétel</h5>
             Tanuló E-mail címe:<input type="email" id="email" name="email" placeholder="E-mail" value="proba@email.hu">
-            <input type="hidden" id="password" name="password" placeholder="Password" value="jelszo">
             <button onclick="addStudent()">Felvesz</button>
         </div>
     </div>
@@ -42,9 +41,9 @@
 
     <div style="float:left; width: 99%">
         <!--Add CourseRegistration-->
-        <h5 style="color:green;">Kurzus tanulóhoz rendelése</h5>
-        Tanuló id:<input type="number" id="student_id" name="student_id" placeholder="student id" value="1">
-        Kurzus id:<input type="number" id="course_id" name="course_id" placeholder="course id" value="1">
+        <h5 style="color:green;">Kurzus tanulóhoz rendelésehez válasszon ki két elemet!</h5>
+        Tanuló id:<input readonly type="number" id="student_id" name="student_id" placeholder="student id" value="1">
+        Kurzus id:<input readonly type="number" id="course_id" name="course_id" placeholder="course id" value="1">
         <input type="hidden" id="power" name="power" placeholder="jegy" value="0" readonly>
         <button onclick="addCourseReg()">Összekapcsolás</button>
         <div style="float:left; width: 99%; margin-top: 11px; background-color: aqua" id="getallcourseregistrations"></div>

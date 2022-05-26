@@ -6,8 +6,6 @@ import java.util.List;
 
 public interface ProfileService {
         List<Profile> getAllProfile();
-
-        public String getProfileByid(int profile_id);
-
-        public void updateProfile(int profile_id, int age, String name);
+        String getProfileByid(int profile_id);
+        void updateProfile(int profile_id, int age, String name);
 }

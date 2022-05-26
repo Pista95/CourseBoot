@@ -20,10 +20,8 @@ public class Student {
     private int student_id;
 
     @NotBlank
-    private String email="proba@email.hu";
-
-    @NotBlank
-    private String password="password";
+    @Column(unique = true)
+    private String email;
 
     @OneToMany(mappedBy = "student")
     Set<CourseRegistration> courseregistration;

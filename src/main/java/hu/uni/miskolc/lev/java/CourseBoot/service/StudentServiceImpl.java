@@ -37,14 +37,13 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
-    public void updateStudent(int student_id, String email, String password) {
+    public void updateStudent(int student_id, String email) {
         Optional<Student> student = studentRepository.findById(student_id);
         if (student.isPresent()) {
             Student s =student.get();
             s.setEmail(email);
-            s.setPassword(password);
             studentRepository.save(s);
-            System.out.println("\nStudentServiceImp update student: "+student_id+" "+email+" "+password);
+            System.out.println("\nStudentServiceImp update student: "+student_id+" "+email);
         }
     }
 
@@ -68,7 +67,6 @@ public class StudentServiceImpl implements StudentService{
                 "Tanuló id:"+
                 getAllStudent().get(last_id).getStudent_id()+
                 "\ne-mail:"+
-                getAllStudent().get(last_id).getEmail()+
-                "\njelszó:***********\n"+student.toString()+"\n";
+                getAllStudent().get(last_id).getEmail()+ "\n";
     }
 }

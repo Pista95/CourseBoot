@@ -7,12 +7,17 @@ function loadPages(){
 
 }
 
+function chooseStudent(id){
+    $("#student_id").val(id);
+}
+function chooseCourse(id){
+    $("#course_id").val(id);
+}
 //////////////////////////////////
 
 function addStudent(){
 
     let param1 = document.querySelector('#email');
-    let param2 = document.querySelector('#password');
 
     // Creating a XHR object
     let xhr = new XMLHttpRequest();
@@ -33,7 +38,7 @@ function addStudent(){
     };
 
     // Converting JSON data to string
-    let data = JSON.stringify({ "email": param1.value,"password":param2.value});
+    let data = JSON.stringify({ "email": param1.value});
     // Sending data with the request
     xhr.send(data);
 }
@@ -158,12 +163,11 @@ function deleteCourseReg(courseregistration_id){
 ///////////////////////////////////////////////////////////
 
 function updateStudent(student_id){
-    var password=document.getElementById('password'+student_id).value;
     var email=document.getElementById('email'+student_id).value;
 
     // Creating a XHR object
     let xhr = new XMLHttpRequest();
-    let url = "http://localhost:8090/updateStudent?student_id="+student_id+"&email="+email+"&password="+password+"";
+    let url = "http://localhost:8090/updateStudent?student_id="+student_id+"&email="+email+"";
 
     xhr.open("POST", url, true);
 
@@ -196,8 +200,8 @@ function updateProfile(profile_id){
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             // Print received data from server
-            loadPages();
             alert("Profil módosítva");
+            loadPages();
             $("#getprofile").load('http://localhost:8090/getProfile?profile_id='+profile_id);
 
         }
@@ -222,8 +226,8 @@ function updateCourse(course_id){
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             // Print received data from server
-            loadPages();
             alert("Kurzus módosítva");
+            loadPages();
         }
     };
 
@@ -243,8 +247,8 @@ function updateCourseReg(courseregistration_id){
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             // Print received data from server
-            loadPages();
             alert("Jegy módosítva");
+            loadPages();
         }
     };
 

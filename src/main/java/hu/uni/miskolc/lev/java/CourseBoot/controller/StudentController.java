@@ -25,8 +25,8 @@ public class StudentController {
 
     @PostMapping("updateStudent")
     @ResponseBody
-    public void updateStudentById(@RequestParam int student_id, @RequestParam String email, @RequestParam String password){
-        studentService.updateStudent(student_id, email, password);
+    public void updateStudentById(@RequestParam int student_id, @RequestParam String email){
+        studentService.updateStudent(student_id, email);
     }
 
     @PostMapping("deleteStudent")
@@ -47,14 +47,14 @@ public class StudentController {
                     "</body>\n" + "</html>";
         } else {
              result= "<html><header><title>getAllstudent</title></header><body>";
-             result+="Student/Prfile (rekordok száma: " + studentService.getAllStudent().size()+")<br><table style='width:98%' align='center' border='1'>" +
-                     "<th>Tanuló</th><!--th>Tanuló név (id) (profile táblából)</th--><th>E-mail</th><!--th>Jelszó</th--><th colspan='2'>Művelet</th>";
+             result+="Student/Profile (rekordok száma: " + studentService.getAllStudent().size()+")<br><table style='width:98%' align='center' border='1'>" +
+                     "<th>Tanuló</th><!--th>Tanuló név (id) (profile táblából)</th--><th>E-mail</th><th colspan='3'>Művelet</th>";
              for(int i=0; i<studentService.getAllStudent().size(); i++) {
                  result += "<tr><td>"+profileService.getAllProfile().get(i).getName()+" (id:"+ studentService.getAllStudent().get(i).getStudent_id()+")</td>" +
-                         "<td><input readonly id='email"+studentService.getAllStudent().get(i).getStudent_id()+"' value='"+ studentService.getAllStudent().get(i).getEmail()+"'></td>"+
-                         "<!--td><input type='' id='password"+studentService.getAllStudent().get(i).getStudent_id()+"' value='*********'></td-->"+
-                         "<td><button onclick='getProfile(this.id)' id='"+ studentService.getAllStudent().get(i).getStudent_id()+"'>Profil</button></td>"+
+                         "<td><input id='email"+studentService.getAllStudent().get(i).getStudent_id()+"' value='"+ studentService.getAllStudent().get(i).getEmail()+"'></td>"+
+                         "<td><button onclick='chooseStudent(this.id)' id='"+ studentService.getAllStudent().get(i).getStudent_id()+"'>Kiválaszt</button></td>"+
                          "<!--td><button onclick='updateStudent(this.id)' id='"+ studentService.getAllStudent().get(i).getStudent_id()+"'>Módosít</button></td-->"+
+                         "<td><button onclick='getProfile(this.id)' id='"+ studentService.getAllStudent().get(i).getStudent_id()+"'>Profil</button></td>"+
                          "<td><button onclick='deleteStudent(this.id)' id='"+ studentService.getAllStudent().get(i).getStudent_id()+"'>Törlés</button></td>";
              }
              result+="<tr><table></body></html>";
