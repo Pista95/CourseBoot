@@ -118,7 +118,7 @@ function deleteStudent(student_id){
 
 ///////////////////////////////////////////////////////////
 
-function deleteCourse(course_id){
+function  deleteCourse(course_id){
     // Creating a XHR object
     let xhr = new XMLHttpRequest();
     let url = "http://localhost:8090/deleteCourse?course_id="+course_id+"";
@@ -137,10 +137,10 @@ function deleteCourse(course_id){
 
 ///////////////////////////////////////////////////////////
 
-function deleteCourseReg(coursereg_id){
+function deleteCourseReg(courseregistration_id){
     // Creating a XHR object
     let xhr = new XMLHttpRequest();
-    let url = "http://localhost:8090/deleteCourseRegistration?coursereg_id="+coursereg_id+"";
+    let url = "http://localhost:8090/deleteCourseRegistration?courseregistration_id="+courseregistration_id+"";
 
     xhr.open("POST", url, true);
 

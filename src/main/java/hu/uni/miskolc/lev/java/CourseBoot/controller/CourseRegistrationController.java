@@ -28,8 +28,8 @@ public class CourseRegistrationController {
 
     @PostMapping("deleteCourseRegistration")
     @ResponseBody
-    public void deleteCourseRegistration(@RequestParam int coursereg_id){
-           courseRegistrationService.deleteCourseRegistration(coursereg_id);
+    public void deleteCourseRegistration(@RequestParam int courseregistration_id){
+           courseRegistrationService.deleteCourseRegistration(courseregistration_id);
     }
 
     @GetMapping(value = "/getAllCourseRegistration", produces = MediaType.TEXT_HTML_VALUE)

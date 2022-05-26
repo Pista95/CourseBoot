@@ -58,10 +58,10 @@ public class CourseRegistrationServiceImpl implements CourseRegistrationService 
     }
 
     @Override
-    public void deleteCourseRegistration (int coursereg_id) {
+    public void deleteCourseRegistration (int courseregistration_id) {
         try {
-             courseRegistrationRepository.deleteById(coursereg_id);
-             System.out.println("coursereg_id:"+coursereg_id+" deleted");
+             courseRegistrationRepository.deleteById(courseregistration_id);
+             System.out.println("coursereg_id:"+courseregistration_id+" deleted");
         } catch (DataIntegrityViolationException e) {
             logger.error("Could not delete coursereg.");
         }
