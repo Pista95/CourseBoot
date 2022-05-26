@@ -2,7 +2,7 @@ function loadPages(){
     $("#getallstudent").load("http://localhost:8090/getAllStudent");
     $("#getallcourse").load("http://localhost:8090/getAllCourse");
     $("#getallcourseregistrations").load("http://localhost:8090/getAllCourseRegistration");
-    $("#getprofile").load('http://localhost:8090/getProfile?profile_id=1');
+    $("#getprofile").load('http://localhost:8090/getProfile?profile_id=9999');
     $("#description").load("http://localhost:8090/readme");
 
 }
@@ -184,10 +184,9 @@ function getProfile(profile_id){
 
 
 function updateProfile(profile_id){
-    var name=document.getElementById('password'+profile_id).value;
-    var age=document.getElementById('email'+profile_id).value;
+    var name=document.getElementById('name'+profile_id).value;
+    var age=document.getElementById('age'+profile_id).value;
 
-    profile_id=1;
     // Creating a XHR object
     let xhr = new XMLHttpRequest();
     let url = "http://localhost:8090/updateProfile?profile_id="+profile_id+"&name="+name+"&age="+age+"";
@@ -198,13 +197,14 @@ function updateProfile(profile_id){
         if (xhr.readyState === 4 && xhr.status === 200) {
             // Print received data from server
             loadPages();
-            alert("Profile updated");
+            alert("Profil módosítva");
             $("#getprofile").load('http://localhost:8090/getProfile?profile_id='+profile_id);
 
         }
     };
 
     xhr.send();
+
 }
 
 
@@ -223,6 +223,7 @@ function updateCourse(course_id){
         if (xhr.readyState === 4 && xhr.status === 200) {
             // Print received data from server
             loadPages();
+            alert("Kurzus módosítva");
         }
     };
 
@@ -243,6 +244,7 @@ function updateCourseReg(courseregistration_id){
         if (xhr.readyState === 4 && xhr.status === 200) {
             // Print received data from server
             loadPages();
+            alert("Jegy módosítva");
         }
     };
 

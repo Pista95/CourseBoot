@@ -45,7 +45,7 @@ public class CourseRegistrationController {
         } else {
             result= "<html><header><title>getAllCourseAndStudents</title></header><body>";
             result+="Kurzus fevétel, kapcsoló tábla (rekordok száma: " +courseRegistrationService.getAllCourseRegistration().size()+")<table align='center' border='1'>" +
-                    "<th>Sorsz.</th><th>Student név (id)</th><th>Kurzus név (id)</th><th>Jegy</th><th colspan='2'>Művelet</th>";
+                    "<th>Sorsz.</th><th>Tanuló név (id)</th><th>Kurzus név (id)</th><th>Jegy</th><th colspan='2'>Művelet</th>";
          for(int i=0; i<courseRegistrationService.getAllCourseRegistration().size(); i++) {
                 result += "<tr><td>"+courseRegistrationService.getAllCourseRegistration().get(i).getCourseregistration_id()+"</td>" +
                         "<td>"+courseRegistrationService.getAllCourseRegistration().get(i).getStudent().getProfile().getName() +

@@ -1,4 +1,5 @@
 package hu.uni.miskolc.lev.java.CourseBoot.service;
+import hu.uni.miskolc.lev.java.CourseBoot.model.entity.Student;
 import hu.uni.miskolc.lev.java.CourseBoot.model.repo.ProfileRepository;
 import hu.uni.miskolc.lev.java.CourseBoot.model.entity.Profile;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,6 @@ import java.util.Optional;
 @Service
 public class ProfileServiceImpl implements ProfileService{
     private final ProfileRepository profileRepository;
-
     @Autowired
     public ProfileServiceImpl(ProfileRepository profileRepository) {
         this.profileRepository = profileRepository;
@@ -21,15 +21,26 @@ public class ProfileServiceImpl implements ProfileService{
         return (List<Profile>) profileRepository.findAll();
     }
 
+    public void updateProfile(int profile_id, int age, String name){
+        Optional<Profile> profile = profileRepository.findById(profile_id);
+        if (profile.isPresent()) {
+            Profile p =profile.get();
+            p.setName(name);
+            p.setAge(age);
+            profileRepository.save(p);
+        }
+    }
     public String getProfileByid(int profile_id){
         Optional<Profile> profile = profileRepository.findById(profile_id);
         String result = null;
         if (profile.isPresent()) {
-            result="<table align='center' border='1'><th>Név</th><th>Kor<t/h><th>Művelet</th><tr><td>" +
-                    "<input id='name"+profile_id+"' value='"+profile.get().getName()+"'/></td><td>" +
-                    "<input id='age"+profile_id+"' type='number' value='"+profile.get().getAge()+"'/></td><td>" +
-                    "<button onclick='updateProfile("+profile_id+")'>Módosít</button></td></tr></table>";
+            result="<br>Profil adatok:<table align='center' border='1'>" +
+                    "<tr><td>Név:</td><td><input id='name"+profile_id+"' value='"+profile.get().getName()+"'/></td><tr>" +
+                    "<tr><td>Kor:</td><td><input id='age"+profile_id+"' type='number' value='"+profile.get().getAge()+"'/></td></tr>" +
+                    "<tr><td colspan='2'><button onclick='updateProfile("+profile_id+")'>Módosít</button></td></tr>" +
+                    "<tr><td>Felvett tárgyak:</td><td></td></tr></table>";
         }
         return result;
     }
+
 }

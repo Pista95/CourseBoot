@@ -7,8 +7,6 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Controller
 public class StudentController {
     private final StudentService studentService;
@@ -37,11 +35,8 @@ public class StudentController {
         studentService.deleteStudent(student_id);
     }
 
-    @GetMapping("getAllStudentJson")
-    @ResponseBody
-    public List<Student> getAllStudent(){
-        return studentService.getAllStudent();
-    }
+
+
     @GetMapping(value = "/getAllStudent", produces = MediaType.TEXT_HTML_VALUE)
     @ResponseBody
     public String StudentAsHTML() {
@@ -53,12 +48,12 @@ public class StudentController {
         } else {
              result= "<html><header><title>getAllstudent</title></header><body>";
              result+="Student/Prfile (rekordok száma: " + studentService.getAllStudent().size()+")<br><table style='width:98%' align='center' border='1'>" +
-                     "<th>Tanuló</th><!--th>Tanuló név (id) (profile táblából)</th--><th>E-mail</th><th>Jelszó</th><th colspan='2'>Művelet</th>";
+                     "<th>Tanuló</th><!--th>Tanuló név (id) (profile táblából)</th--><th>E-mail</th><!--th>Jelszó</th--><th colspan='2'>Művelet</th>";
              for(int i=0; i<studentService.getAllStudent().size(); i++) {
                  result += "<tr><td>"+profileService.getAllProfile().get(i).getName()+" (id:"+ studentService.getAllStudent().get(i).getStudent_id()+")</td>" +
-                         "<td><input id='email"+studentService.getAllStudent().get(i).getStudent_id()+"' value='"+ studentService.getAllStudent().get(i).getEmail()+"'></td>"+
-                         "<td><input type='' id='password"+studentService.getAllStudent().get(i).getStudent_id()+"' value='*********'></td>"+
-                         "<td><button onclick='getProfile(this.id)' id='"+ studentService.getAllStudent().get(i).getStudent_id()+"'>Profile</button></td>"+
+                         "<td><input readonly id='email"+studentService.getAllStudent().get(i).getStudent_id()+"' value='"+ studentService.getAllStudent().get(i).getEmail()+"'></td>"+
+                         "<!--td><input type='' id='password"+studentService.getAllStudent().get(i).getStudent_id()+"' value='*********'></td-->"+
+                         "<td><button onclick='getProfile(this.id)' id='"+ studentService.getAllStudent().get(i).getStudent_id()+"'>Profil</button></td>"+
                          "<!--td><button onclick='updateStudent(this.id)' id='"+ studentService.getAllStudent().get(i).getStudent_id()+"'>Módosít</button></td-->"+
                          "<td><button onclick='deleteStudent(this.id)' id='"+ studentService.getAllStudent().get(i).getStudent_id()+"'>Törlés</button></td>";
              }
