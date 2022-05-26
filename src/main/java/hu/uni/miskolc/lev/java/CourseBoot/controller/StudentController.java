@@ -58,7 +58,8 @@ public class StudentController {
                  result += "<tr><td>"+profileService.getAllProfile().get(i).getName()+" (id:"+ studentService.getAllStudent().get(i).getStudent_id()+")</td>" +
                          "<td><input id='email"+studentService.getAllStudent().get(i).getStudent_id()+"' value='"+ studentService.getAllStudent().get(i).getEmail()+"'></td>"+
                          "<td><input type='' id='password"+studentService.getAllStudent().get(i).getStudent_id()+"' value='*********'></td>"+
-                         "<td><button onclick='updateStudent(this.id)' id='"+ studentService.getAllStudent().get(i).getStudent_id()+"'>Módosít</button></td>"+
+                         "<td><button onclick='getProfile(this.id)' id='"+ studentService.getAllStudent().get(i).getStudent_id()+"'>Profile</button></td>"+
+                         "<!--td><button onclick='updateStudent(this.id)' id='"+ studentService.getAllStudent().get(i).getStudent_id()+"'>Módosít</button></td-->"+
                          "<td><button onclick='deleteStudent(this.id)' id='"+ studentService.getAllStudent().get(i).getStudent_id()+"'>Törlés</button></td>";
              }
              result+="<tr><table></body></html>";

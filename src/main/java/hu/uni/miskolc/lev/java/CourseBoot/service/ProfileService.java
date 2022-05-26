@@ -4,6 +4,8 @@ import hu.uni.miskolc.lev.java.CourseBoot.model.entity.Profile;
 
 import java.util.List;
 
-    public interface ProfileService {
+public interface ProfileService {
         List<Profile> getAllProfile();
+
+        public String getProfileByid(int profile_id);
     }
