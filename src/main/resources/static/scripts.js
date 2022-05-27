@@ -6,6 +6,7 @@ function loadPages(){
     $("#description").load("http://localhost:8090/readme");
 
 }
+//////////////////////////////////
 
 function chooseStudent(id){
     var studenttr="#studenttr"+id;
@@ -13,6 +14,8 @@ function chooseStudent(id){
     $("#student_id").css("background-color", "aqua");
 
 }
+//////////////////////////////////
+
 function chooseCourse(id){
     var coursetr="#coursetr"+id;
     $("#course_id").val(id);
