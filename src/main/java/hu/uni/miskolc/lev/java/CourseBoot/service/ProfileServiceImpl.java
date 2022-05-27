@@ -33,9 +33,9 @@ public class ProfileServiceImpl implements ProfileService{
         Optional<Profile> profile = profileRepository.findById(profile_id);
         String result = null;
         if (profile.isPresent()) {
-            result="<br>Profil adatok:<table align='center' border='1'>" +
-                    "<tr><td>Név:</td><td><input id='name"+profile_id+"' value='"+profile.get().getName()+"'/></td><tr>" +
-                    "<tr><td>Kor:</td><td><input id='age"+profile_id+"' type='number' value='"+profile.get().getAge()+"'/></td></tr>" +
+            result="<br>Profil adatok:<table align='center'>" +
+                    "<tr><th>Név:</th><td><input id='name"+profile_id+"' value='"+profile.get().getName()+"'/></td><tr>" +
+                    "<tr><th>Kor:</th><td><input id='age"+profile_id+"' type='number' value='"+profile.get().getAge()+"'/></td></tr>" +
                     "<tr><td colspan='2'><button onclick='updateProfile("+profile_id+")'>Módosít</button>" +
                     "<button onclick='loadPages()'>X</button></td></tr>";
         }

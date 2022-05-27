@@ -1,6 +1,5 @@
 Jelen Spring Boot alkalmazás tanulók, kurzusok és azok kapcsolatának nyilvántartására szolgál.
 4 adattáblát használunk: student, profile, course, és courseregistration táblákat.
-Ez utóbbi kapcsolótábla szerepet is betölt.
-Ezen kívül a student és profile táblák között 1-1 kapcsolatot alakítottam ki.
+Ez utóbbi kapcsolótábla szerepet is betölt.Ezen kívül a student és profile táblák között 1-1 kapcsolatot alakítottam ki.
 A táblákba tudunk új rekordot beszúrni, törölni, adatot módosítani, valamint lekérdezni.
 A localhost:8090-en elérhető egy egyszerű GUI, így nem szükséges a postman használata.

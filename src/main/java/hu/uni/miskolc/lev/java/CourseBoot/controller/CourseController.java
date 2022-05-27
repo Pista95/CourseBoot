@@ -44,7 +44,7 @@ public class CourseController {
                     "</body>\n" + "</html>";
         } else {
             result= "<html><header><title>getAllCourse</title></header><body>";
-            result+="Course (rekordok száma: " + courseService.getAllCourse().size()+")<br><table id='studenttable' style='width:98%' align='center' border='1'>" +
+            result+="Course (rekordok száma: " + courseService.getAllCourse().size()+")<br><table id='studenttable' align='center'>" +
                     "<th>Kurzus id</th><th>Kurzus név</th><th colspan='3'>Művelet</th>";
             for(int i=0; i<courseService.getAllCourse().size(); i++) {
                 result += "<tr id='coursetr"+courseService.getAllCourse().get(i).getCourse_id()+"'><td>"+courseService.getAllCourse().get(i).getCourse_id()+"</td>" +
