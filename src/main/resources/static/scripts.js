@@ -8,10 +8,15 @@ function loadPages(){
 }
 
 function chooseStudent(id){
+    var studenttr="#studenttr"+id;
     $("#student_id").val(id);
+    $("#student_id").css("background-color", "aqua");
+
 }
 function chooseCourse(id){
+    var coursetr="#coursetr"+id;
     $("#course_id").val(id);
+    $("#course_id").css("background-color", "aqua");
 }
 //////////////////////////////////
 
@@ -94,6 +99,7 @@ function addCourseReg(){
         if (xhr.readyState === 4 && xhr.status === 200) {
             // Print received data from server
             loadPages();
+
         }
     };
 

@@ -44,10 +44,10 @@ public class CourseController {
                     "</body>\n" + "</html>";
         } else {
             result= "<html><header><title>getAllCourse</title></header><body>";
-            result+="Course (rekordok száma: " + courseService.getAllCourse().size()+")<br><table style='width:98%' align='center' border='1'>" +
-                    "<th>Kurzus id</th><th>Kurzus név</th><th colspan='2'>Művelet</th>";
+            result+="Course (rekordok száma: " + courseService.getAllCourse().size()+")<br><table id='studenttable' style='width:98%' align='center' border='1'>" +
+                    "<th>Kurzus id</th><th>Kurzus név</th><th colspan='3'>Művelet</th>";
             for(int i=0; i<courseService.getAllCourse().size(); i++) {
-                result += "<tr><td>"+courseService.getAllCourse().get(i).getCourse_id()+"</td>" +
+                result += "<tr id='coursetr"+courseService.getAllCourse().get(i).getCourse_id()+"'><td>"+courseService.getAllCourse().get(i).getCourse_id()+"</td>" +
                         "<td><input id='course"+courseService.getAllCourse().get(i).getCourse_id()+"' value='"+courseService.getAllCourse().get(i).getName()+"'></td>" +
                         "<td><button onclick='chooseCourse(this.id)' id='"+courseService.getAllCourse().get(i).getCourse_id()+"'>Kiválaszt</button></td>"+
                         "<td><button onclick='updateCourse(this.id)' id='"+courseService.getAllCourse().get(i).getCourse_id()+"'>Módosít</button></td>"+
