@@ -1,11 +1,14 @@
 package hu.uni.miskolc.lev.java.CourseBoot.controller;
 
+import hu.uni.miskolc.lev.java.CourseBoot.model.entity.Profile;
 import hu.uni.miskolc.lev.java.CourseBoot.model.entity.Student;
 import hu.uni.miskolc.lev.java.CourseBoot.service.ProfileService;
 import hu.uni.miskolc.lev.java.CourseBoot.service.StudentService;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class StudentController {
@@ -35,8 +38,6 @@ public class StudentController {
         studentService.deleteStudent(student_id);
     }
 
-
-
     @GetMapping(value = "/getAllStudent", produces = MediaType.TEXT_HTML_VALUE)
     @ResponseBody
     public String StudentAsHTML() {
@@ -60,5 +61,11 @@ public class StudentController {
              result+="<tr><table></body></html>";
         }
         return result;
+    }
+
+    @GetMapping("getAllprofileJson")
+    @ResponseBody
+    public List<Profile> getAllprfileJson(){
+        return profileService.getAllProfile();
     }
 }
