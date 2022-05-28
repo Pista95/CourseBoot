@@ -37,6 +37,8 @@ public class CourseController {
     @GetMapping(value = "/getAllCourse", produces = MediaType.TEXT_HTML_VALUE)
     @ResponseBody
     public String StudentAsHTML() {
+
+
         String result;
         if (courseService.getAllCourse().size() == 0) {
             result= "<html>\n" + "<header><title>getAllCourse</title></header>\n" +
