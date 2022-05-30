@@ -20,10 +20,18 @@ public class CourseController {
         System.out.println(course.toString());
     }
     //Kurzus törlés
-    @PostMapping("deleteCourse")
+    @PostMapping(value = "/deleteCourse", produces = MediaType.TEXT_HTML_VALUE)
     @ResponseBody
-    public void deleteCourseById(@RequestParam int course_id){
-            courseService.deleteCourse(course_id);
+    public String deleteCourseById(@RequestParam int course_id){
+        String result;
+        if(courseService.deleteCourse(course_id)){
+           result="Törlöve";
+        }else{
+            result="Törlés nem lehetséges!" +
+                    "Előbb töröjön minden olyan rekordot a courseregistration táblából, ami kapcsolódik " +
+                    "a "+course_id+" azonosítóval rendelkező kurzushoz!";
+        }
+        return result;
     }
 
     //Kurzus frissítés

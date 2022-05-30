@@ -48,12 +48,14 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
-    public void deleteStudent(int student_id) {
+    public Boolean deleteStudent(int student_id) {
         try {
             studentRepository.deleteById(student_id);
             System.out.println("student_id:"+student_id+ " deleted");
+            return true;
         } catch (DataIntegrityViolationException e) {
             logger.error("Could not remove student.");
+            return false;
             }
     }
 

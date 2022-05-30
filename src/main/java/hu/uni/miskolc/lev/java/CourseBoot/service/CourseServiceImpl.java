@@ -40,12 +40,14 @@ public class CourseServiceImpl implements CourseService{
     }
 
     @Override
-    public void deleteCourse(int course_id) {
+    public Boolean deleteCourse(int course_id) {
         try {
             courseRepository.deleteById(course_id);
             System.out.println("course_id:"+course_id+" deleted");
+            return true;
         } catch (DataIntegrityViolationException e) {
             logger.error("Could not remove course.");
+            return false;
         }
     }
 

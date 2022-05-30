@@ -29,10 +29,18 @@ public class StudentController {
         studentService.updateStudent(student_id, email);
     }
 
-    @PostMapping("deleteStudent")
+    @PostMapping(value = "/deleteStudent", produces = MediaType.TEXT_HTML_VALUE)
     @ResponseBody
-    public void deleteStudent(@RequestParam int student_id){
-        studentService.deleteStudent(student_id);
+    public String deleteStudent(@RequestParam int student_id){
+        String result;
+        if(studentService.deleteStudent(student_id)){
+           result="Törölve";
+        }else{
+           result="Törlés nem lehetséges!" +
+                   "Előbb töröjön minden olyan rekordot a courseregistration táblából, ami kapcsolódik" +
+                   " a "+student_id+" azonosítóval rendelkező tanulóhoz!";
+        }
+        return result;
     }
 
     @GetMapping(value = "/getAllStudent", produces = MediaType.TEXT_HTML_VALUE)
